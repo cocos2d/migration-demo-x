@@ -3,9 +3,13 @@
 
 #include "cocos2d.h"
 
-class HelloWorld : public cocos2d::Layer
+class LoadScene : public cocos2d::Layer
 {
+protected:
+    cocos2d::ui::Scale9Sprite *_background;
+    
 public:
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -16,7 +20,7 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(LoadScene);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

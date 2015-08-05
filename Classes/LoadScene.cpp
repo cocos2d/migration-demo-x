@@ -1,14 +1,15 @@
-#include "HelloWorldScene.h"
+#include "LoadScene.h"
+#include "UIScale9Sprite.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* LoadScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = LoadScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -18,7 +19,7 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool LoadScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -26,9 +27,24 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
+
+    // get size and position of visible area
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Vec2 visibleOrigin = Director::getInstance()->getVisibleOrigin();
+
+    //  first we preload the artwork needed to run the load scene
+    
+    // create colored background
+    _background = cocos2d::ui::Scale9Sprite::create("white_square.png");
+    
+    _background->setAnchorPoint((cocos2d::Vec2){0, 0});
+    _background->setContentSize(visibleSize);
+    _background->setPosition(visibleOrigin);
+    _background->setColor((cocos2d::Color3B){128, 128, 128});
+    
+    this->addChild(_background);
+    
+    
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -38,10 +54,10 @@ bool HelloWorld::init()
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+                                           CC_CALLBACK_1(LoadScene::menuCloseCallback, this));
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+	closeItem->setPosition(Vec2(visibleOrigin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+                                visibleOrigin.y + closeItem->getContentSize().height/2));
 
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
@@ -57,17 +73,17 @@ bool HelloWorld::init()
     auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     
     // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+    label->setPosition(Vec2(visibleOrigin.x + visibleSize.width/2,
+                            visibleOrigin.y + visibleSize.height - label->getContentSize().height));
 
     // add the label as a child to this layer
     this->addChild(label, 1);
 
-    // add "HelloWorld" splash screen"
+    // add "LoadScene" splash screen"
     auto sprite = Sprite::create("HelloWorld.png");
 
     // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    sprite->setPosition(Vec2(visibleSize.width/2 + visibleOrigin.x, visibleSize.height/2 + visibleOrigin.y));
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
@@ -76,7 +92,7 @@ bool HelloWorld::init()
 }
 
 
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void LoadScene::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
 
