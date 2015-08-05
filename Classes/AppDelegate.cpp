@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "LoadScene.h"
+#include <vector>
 
 USING_NS_CC;
 
@@ -69,6 +70,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     register_all_packages();
+    
+    // create the order of which to search resources
+    // cocos2d-x uses a folder based approach
+    std::vector<std::string> searchOrder;
+    //searchOrder.push_back("4x");
+    //searchOrder.push_back("2x");
+    searchOrder.push_back("1x");
+    CCFileUtils::getInstance()->setSearchPaths(searchOrder);
 
     // create a scene. it's an autorelease object
     auto scene = LoadScene::createScene();

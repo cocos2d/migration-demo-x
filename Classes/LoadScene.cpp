@@ -21,29 +21,35 @@ Scene* LoadScene::createScene()
 // on "init" you need to initialize your instance
 bool LoadScene::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
-        return false;
-    }
+    // create the base class
+    // If this fails, the world will end anyways, so an assert will make sure we are aware of any problems during development
+    if (!Layer::init()) assert("The Kessel Run in 12 parsecs? O'rly?");
 
     // get size and position of visible area
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 visibleOrigin = Director::getInstance()->getVisibleOrigin();
 
     //  first we preload the artwork needed to run the load scene
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("demo.plist");
     
-    // create colored background
+    // create a colored background
     _background = cocos2d::ui::Scale9Sprite::create("white_square.png");
-    
     _background->setAnchorPoint((cocos2d::Vec2){0, 0});
     _background->setContentSize(visibleSize);
     _background->setPosition(visibleOrigin);
     _background->setColor((cocos2d::Color3B){128, 128, 128});
-    
     this->addChild(_background);
     
+    // loading text
+
+    
+    
+    // progress indicator
+    _progress = cocos2d::ProgressTimer::create(cocos2d::Sprite::create("progress.png"));
+    _progress->setPosition(visibleOrigin + (Vec2){100, 100});
+    _progress->setPercentage(66);
+    _progress->setScale(0.25);
+    this->addChild(_progress);
     
 
     /////////////////////////////
@@ -76,6 +82,8 @@ bool LoadScene::init()
     label->setPosition(Vec2(visibleOrigin.x + visibleSize.width/2,
                             visibleOrigin.y + visibleSize.height - label->getContentSize().height));
 
+    label->setScale(0.25);
+    
     // add the label as a child to this layer
     this->addChild(label, 1);
 
@@ -86,6 +94,8 @@ bool LoadScene::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + visibleOrigin.x, visibleSize.height/2 + visibleOrigin.y));
 
     // add the sprite as a child to this layer
+    sprite->setScale(0.25);
+    
     this->addChild(sprite, 0);
     
     return true;

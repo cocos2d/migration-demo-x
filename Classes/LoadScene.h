@@ -7,6 +7,7 @@ class LoadScene : public cocos2d::Layer
 {
 protected:
     cocos2d::ui::Scale9Sprite *_background;
+    cocos2d::ProgressTimer *_progress;
     
 public:
     
