@@ -74,8 +74,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create the order of which to search resources
     // cocos2d-x uses a folder based approach
     std::vector<std::string> searchOrder;
-    //searchOrder.push_back("4x");
-    //searchOrder.push_back("2x");
+    searchOrder.push_back("4x");
+    searchOrder.push_back("2x");
     searchOrder.push_back("1x");
     CCFileUtils::getInstance()->setSearchPaths(searchOrder);
 

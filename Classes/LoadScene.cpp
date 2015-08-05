@@ -45,10 +45,9 @@ bool LoadScene::init()
     
     
     // progress indicator
-    _progress = cocos2d::ProgressTimer::create(cocos2d::Sprite::create("progress.png"));
+    _progress = cocos2d::ProgressTimer::create(cocos2d::Sprite::createWithSpriteFrameName("progress.png"));
     _progress->setPosition(visibleOrigin + (Vec2){100, 100});
     _progress->setPercentage(66);
-    _progress->setScale(0.25);
     this->addChild(_progress);
     
 
