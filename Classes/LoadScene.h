@@ -1,14 +1,17 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __LOAD_SCENE_H__
+#define __LOAD_SCENE_H__
 
 #include "cocos2d.h"
+
+// -----------------------------------------------------------------------
 
 class LoadScene : public cocos2d::Layer
 {
 protected:
     cocos2d::ui::Scale9Sprite *_background;
     cocos2d::ProgressTimer *_progress;
-    
+    cocos2d::Sprite *_loading;
+    int _loadStep;
 public:
     
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -20,8 +23,12 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
+    void loadNext(float dt);
+    
     // implement the "static create()" method manually
     CREATE_FUNC(LoadScene);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+// -----------------------------------------------------------------------
+
+#endif // __LOAD_SCENE_H__

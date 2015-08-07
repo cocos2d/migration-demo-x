@@ -73,6 +73,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     CCLOG("content scale %.1f", director->getContentScaleFactor());
     
+    
+    // -----------------------------------------------------------------------
     // create the order of which to search resources
     // cocos2d-x uses a folder based approach
     std::vector<std::string> searchOrder;
@@ -80,12 +82,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (director->getContentScaleFactor() >= 1.5) searchOrder.push_back("2x");
     searchOrder.push_back("1x");
     CCFileUtils::getInstance()->setSearchPaths(searchOrder);
+    // -----------------------------------------------------------------------
+
 
     // create a scene. it's an autorelease object
     auto scene = LoadScene::createScene();
 
     // run
     director->runWithScene(scene);
+    
+    scene->scheduleUpdate();
 
     return true;
 }
@@ -105,3 +111,15 @@ void AppDelegate::applicationWillEnterForeground() {
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
+
+
+
+
+
+
+
+
+
+
+
+

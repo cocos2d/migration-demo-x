@@ -1,7 +1,10 @@
 #include "LoadScene.h"
 #include "UIScale9Sprite.h"
+#include <unistd.h>
 
 USING_NS_CC;
+
+// -----------------------------------------------------------------------
 
 Scene* LoadScene::createScene()
 {
@@ -18,88 +21,205 @@ Scene* LoadScene::createScene()
     return scene;
 }
 
+// -----------------------------------------------------------------------
 // on "init" you need to initialize your instance
 bool LoadScene::init()
 {
+    // ******************
     // create the base class
-    // If this fails, the world will end anyways, so an assert will make sure we are aware of any problems during development
+    
+    // ** cocos2d-objc **
+    // self = [super init];
+    // NSAssert(self, @"Whoops");
+    
+    // ** cocos2d-x *****
     if (!Layer::init()) assert("The Kessel Run in 12 parsecs? O'rly?");
+    
+    // ******************
+    // preload artwork needed for load scene
+    
+    // ** cocos2d-objc **
+    // [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"demo.plist"];
 
-    // get size and position of visible area
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 visibleOrigin = Director::getInstance()->getVisibleOrigin();
-
-    //  first we preload the artwork needed to run the load scene
+    // ** cocos2d-x *****
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("demo.plist");
     
-    // create a colored background
+    // ******************
+    // get some screen dimensions
+    
+    // ** cocos2d-objc **
+    // CGSize size = [CCDirector sharedDirector].viewSize;
+    
+    // ** cocos2d-x *****
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size size = Director::getInstance()->getVisibleSize();
+    
+    // ******************
+    // create background
+    
+    // ** cocos2d-objc **
+    // CCSprite9Slice *background = [CCSprite9Slice spriteWithImageNamed:@"white_square.png"];
+    // background.anchorPoint = CGPointZero;
+    // background.position = CGPointZero;
+    // background.contentSize = size;
+    // background.color = [CCColor grayColor];
+    // [self addChild:background];
+    
+    // ** cocos2d-x *****
     _background = cocos2d::ui::Scale9Sprite::create("white_square.png");
     _background->setAnchorPoint((cocos2d::Vec2){0, 0});
-    _background->setContentSize(visibleSize);
-    _background->setPosition(visibleOrigin);
+    _background->setPosition(origin);
+    _background->setContentSize(size);
     _background->setColor((cocos2d::Color3B){128, 128, 128});
     this->addChild(_background);
     
+    // ******************
     // loading text
-
     
+    // ** cocos2d-objc **
+    // _loading = [CCSprite spriteWithImageNamed:@"loading.png"];
+    // _loading.positionType = CCPositionTypeNormalized;
+    // _loading.position = (CGPoint){0.5, 0.5};
+    // [self addChild:_loading];
     
+    // ** cocos2d-x *****
+    _loading = cocos2d::Sprite::createWithSpriteFrameName("loading.png");
+    _loading->setNormalizedPosition((Vec2){0.5, 0.5});
+    this->addChild(_loading);
+    
+    // ******************
     // progress indicator
+    
+    // ** cocos2d-objc **
+    //_progress = [CCProgressNode progressWithSprite:[CCSprite spriteWithImageNamed:@"progress.png"]];
+    //_progress.positionType = CCPositionTypeNormalized;
+    //_progress.position = (CGPoint){0.5, 0.5};
+    //_progress.type = CCProgressNodeTypeRadial;
+    //_progress.rotation = 180;
+    //_progress.percentage = 0;
+    //[self addChild:_progress];
+    
+    // ** cocos2d-x *****
     _progress = cocos2d::ProgressTimer::create(cocos2d::Sprite::createWithSpriteFrameName("progress.png"));
-    _progress->setPosition(visibleOrigin + (Vec2){100, 100});
-    _progress->setPercentage(66);
+    _progress->setNormalizedPosition((Vec2){0.5, 0.5});
+    _progress->setType(ProgressTimer::Type::RADIAL);
+    _progress->setRotation(180);
+    _progress->setPercentage(0);
     this->addChild(_progress);
     
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(LoadScene::menuCloseCallback, this));
+    // ******************
+    // schedule update
     
-	closeItem->setPosition(Vec2(visibleOrigin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                visibleOrigin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
+    // ** cocos2d-objc **
+    // _loadStep = 0;
+    // [self schedule:@selector(loadNext:) interval:0.033];
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+    // ** cocos2d-x *****
+    _loadStep = 0;
+    this->schedule(CC_SCHEDULE_SELECTOR(LoadScene::loadNext), 0.033);
     
-    // position the label on the center of the screen
-    label->setPosition(Vec2(visibleOrigin.x + visibleSize.width/2,
-                            visibleOrigin.y + visibleSize.height - label->getContentSize().height));
+    // ******************
+    // done
 
-    label->setScale(0.25);
-    
-    // add the label as a child to this layer
-    this->addChild(label, 1);
+    // ** cocos2d-objc **
+    // return self;
 
-    // add "LoadScene" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + visibleOrigin.x, visibleSize.height/2 + visibleOrigin.y));
-
-    // add the sprite as a child to this layer
-    sprite->setScale(0.25);
-    
-    this->addChild(sprite, 0);
-    
+    // ** cocos2d-x *****
     return true;
+    
+    // ******************
 }
 
+// -----------------------------------------------------------------------
+
+void LoadScene::loadNext(float dt)
+{
+    switch (_loadStep)
+    {
+        case 0:
+        {
+            // load ex textures here
+            // our loading doesnt take time, so we add a small delay to simulate "real" loading
+            usleep(500000);
+            _progress->setPercentage(40);
+            break;
+        }
+        case 1:
+        {
+            // load ex audio here
+            usleep(500000);
+            _progress->setPercentage(50);
+            break;
+        }
+        case 2:
+        {
+            // load animations, shaders etc
+            usleep(500000);
+            _progress->setPercentage(60);
+            break;
+        }
+        case 3:
+        {
+            // pre render stuff
+            usleep(500000);
+            _progress->setPercentage(90);
+            break;
+        }
+        default:
+        {
+            // done
+            _progress->setPercentage(100);
+            this->unschedule(CC_SCHEDULE_SELECTOR(LoadScene::loadNext));
+            
+            // ******************
+            // Show some fancy animation.
+            // Why, do you ask? Well, because we can.
+            
+            // ** cocos2d-objc **
+            // [_progress runAction:[CCActionSequence actions:
+            //                       [CCActionCallBlock actionWithBlock:^(void)
+            //                        {
+            //                        [_progress runAction:[CCActionEaseOut actionWithAction:[CCActionFadeOut actionWithDuration:1.0] rate:2.0]];
+            //                        [_progress runAction:[CCActionEaseOut actionWithAction:[CCActionScaleTo actionWithDuration:1.0 scale:5.0] rate:2.0]];
+            //                        [_loading runAction:[CCActionFadeOut actionWithDuration:1.0]];
+            //                        }],
+            //                       [CCActionDelay actionWithDuration:1.5], // here we wait for scale and fade to complete
+            //                       [CCActionCallBlock actionWithBlock:^(void)
+            //                        {
+            //                        [[CCDirector sharedDirector] replaceScene:[MainScene new]
+            //                                                   withTransition:[CCTransition transitionRevealWithDirection:CCTransitionDirectionLeft duration:0.5]];
+            //                        }],
+            //                       nil]];
+            
+            // ** cocos2d-x *****
+            auto scaleProgress = CallFunc::create([this]()
+            {
+                _progress->runAction(cocos2d::ScaleTo::create(1.0, 5.0));
+                _progress->runAction(cocos2d::FadeOut::create(1.0));
+                _loading->runAction(cocos2d::FadeOut::create(1.0));
+                
+            });
+
+            auto runMainScene = CallFunc::create([this]()
+            {
+                Director::getInstance()->replaceScene(TransitionSlideInR::create(0.5, LoadScene::createScene()));
+            });
+
+            _progress->runAction(cocos2d::Sequence::create(scaleProgress,
+                                                           cocos2d::DelayTime::create(1.5),
+                                                           runMainScene,
+                                                           NULL));
+            // ******************
+            
+            break;
+        }
+    }
+    
+    // next step
+    _loadStep ++;
+}
+
+// -----------------------------------------------------------------------
 
 void LoadScene::menuCloseCallback(Ref* pSender)
 {
@@ -109,3 +229,17 @@ void LoadScene::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+
+// -----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E03429E1B7513AE00017584 /* MainScene.cpp */; };
 		0E8009E41B722F0F00D1416E /* white_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009E31B722F0F00D1416E /* white_square.png */; };
 		0E8009F41B72398700D1416E /* 1x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F11B72398700D1416E /* 1x */; };
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
@@ -105,6 +106,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E03429E1B7513AE00017584 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
+		0E03429F1B7513AE00017584 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		0E8009E31B722F0F00D1416E /* white_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_square.png; sourceTree = "<group>"; };
 		0E8009F11B72398700D1416E /* 1x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1x; sourceTree = "<group>"; };
 		0E8009F21B72398700D1416E /* 2x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2x; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8719C43A87006E1F66 /* LoadScene.h */,
 				46880B8619C43A87006E1F66 /* LoadScene.cpp */,
+				0E03429F1B7513AE00017584 /* MainScene.h */,
+				0E03429E1B7513AE00017584 /* MainScene.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -512,6 +517,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
