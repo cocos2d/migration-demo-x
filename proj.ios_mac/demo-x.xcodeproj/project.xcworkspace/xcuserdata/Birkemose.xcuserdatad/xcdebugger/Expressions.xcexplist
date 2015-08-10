@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "cocos2d::NavMesh::update(float):CCNavMesh.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "_obstacleList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "cocos2d::Scene::init():CCScene.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

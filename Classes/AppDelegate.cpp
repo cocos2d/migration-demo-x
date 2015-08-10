@@ -82,17 +82,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (director->getContentScaleFactor() >= 1.5) searchOrder.push_back("2x");
     searchOrder.push_back("1x");
     CCFileUtils::getInstance()->setSearchPaths(searchOrder);
+
+    // run with scene (see LoadScene::CreateScene for an explanation on the LoadScene setup)
+    director->runWithScene(LoadScene::createScene());
     // -----------------------------------------------------------------------
-
-
-    // create a scene. it's an autorelease object
-    auto scene = LoadScene::createScene();
-
-    // run
-    director->runWithScene(scene);
     
-    scene->scheduleUpdate();
-
     return true;
 }
 

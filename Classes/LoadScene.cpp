@@ -1,4 +1,5 @@
 #include "LoadScene.h"
+#include "MainScene.h"
 #include "UIScale9Sprite.h"
 #include <unistd.h>
 
@@ -8,13 +9,30 @@ USING_NS_CC;
 
 Scene* LoadScene::createScene()
 {
-    // 'scene' is an autorelease object
+    /*
+     This is how the templates normally create a scene
+     If you wonder why scene is based on cocos2d::Layer, here is the explanation
+     
+     When creating a scene, you must also have at least one layer. Unlike -objc, you can not add nodes to a scene, only layers.
+     So to avoid creating both a cocos2d::Scene descendant, and a cocos2d::Layer descendant, this hybrid is created.
+     
+     So why not simply base it on cocos2d::Scene you ask?
+     
+     The reason is as stated above, that you can not add nodes to a scene. So if the class was based on cocos2d::Scene, you could not
+     use the syntax this->addChild in myScene::init. You would have to create a cocos2d::Layer, and add the nodes to that, so you would 
+     end up with this->_layer->addChild, which really isnt all that good programming.
+     
+     The final thing needed is a constructor / factory method, since you can not use default MyScene::create, as it would return a cocos2d::Layer.
+     Because of that, we use createScene to build the scene + layer hierachy, and then return the scene.
+    
+     For a more programatically "correct" approach, see MainScene
+    */
+
+    // create the scene, which we will later return
     auto scene = Scene::create();
     
-    // 'layer' is an autorelease object
+    // create the layer, and add it to the scene
     auto layer = LoadScene::create();
-
-    // add layer as a child to scene
     scene->addChild(layer);
 
     // return the scene
@@ -22,7 +40,7 @@ Scene* LoadScene::createScene()
 }
 
 // -----------------------------------------------------------------------
-// on "init" you need to initialize your instance
+
 bool LoadScene::init()
 {
     // ******************
@@ -33,7 +51,7 @@ bool LoadScene::init()
     // NSAssert(self, @"Whoops");
     
     // ** cocos2d-x *****
-    if (!Layer::init()) assert("The Kessel Run in 12 parsecs? O'rly?");
+    if (!Layer::init()) CCASSERT(false, "The Kessel Run in 12 parsecs? O'rly?");
     
     // ******************
     // preload artwork needed for load scene
@@ -132,22 +150,6 @@ bool LoadScene::init()
 
 // -----------------------------------------------------------------------
 
-void LoadScene::onEnter()
-{
-    CCLayer::onEnter();
-    // Add your custom onEnter code here (if needed)
-
-}
-
-void LoadScene::onExit()
-{
-    // Add your custom onExit code here (if needed)
-
-    CCLayer::onExit();
-}
-
-// -----------------------------------------------------------------------
-
 void LoadScene::loadNext(float dt)
 {
     switch (_loadStep)
@@ -218,7 +220,7 @@ void LoadScene::loadNext(float dt)
 
             auto runMainScene = CallFunc::create([this]()
             {
-                Director::getInstance()->replaceScene(TransitionSlideInR::create(0.5, LoadScene::createScene()));
+                Director::getInstance()->replaceScene(TransitionSlideInR::create(0.5, MainScene::create()));
             });
 
             _progress->runAction(cocos2d::Sequence::create(scaleProgress,
