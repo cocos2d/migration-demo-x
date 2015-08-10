@@ -1,7 +1,9 @@
-#ifndef __MAIN_SCENE_H__
-#define __MAIN_SCENE_H__
+#ifndef __MAIN_LAYER_PLUS_SCENE_H__
+#define __MAIN_LAYER_PLUS_SCENE_H__
 
 #include "cocos2d.h"
+
+// In slightly larger projects, you would probably split this file into a MainScene and a MainLayer file.
 
 // -----------------------------------------------------------------------
 
@@ -29,7 +31,7 @@ public:
 
 // -----------------------------------------------------------------------
 
-#endif // __MAIN_SCENE_H__
+#endif // __MAIN_LAYER_PLUS_SCENE_H__
 
 
 

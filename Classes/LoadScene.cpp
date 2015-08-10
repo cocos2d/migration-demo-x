@@ -11,7 +11,7 @@ Scene* LoadScene::createScene()
 {
     /*
      This is how the templates normally create a scene
-     If you wonder why scene is based on cocos2d::Layer, here is the explanation
+     If you wonder why scene is based on cocos2d::Layer, and why you cant use create(), here is the explanation
      
      When creating a scene, you must also have at least one layer. Unlike -objc, you can not add nodes to a scene, only layers.
      So to avoid creating both a cocos2d::Scene descendant, and a cocos2d::Layer descendant, this hybrid is created.
@@ -25,7 +25,7 @@ Scene* LoadScene::createScene()
      The final thing needed is a constructor / factory method, since you can not use default MyScene::create, as it would return a cocos2d::Layer.
      Because of that, we use createScene to build the scene + layer hierachy, and then return the scene.
     
-     For a more programatically "correct" approach, see MainScene
+     For an "easier to understand" approach, see MainScene
     */
 
     // create the scene, which we will later return
