@@ -24,6 +24,8 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     void loadNext(float dt);
+    void onEnter();
+    void onExit();
     
     // implement the "static create()" method manually
     CREATE_FUNC(LoadScene);

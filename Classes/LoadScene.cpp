@@ -132,6 +132,22 @@ bool LoadScene::init()
 
 // -----------------------------------------------------------------------
 
+void LoadScene::onEnter()
+{
+    CCLayer::onEnter();
+    // Add your custom onEnter code here (if needed)
+
+}
+
+void LoadScene::onExit()
+{
+    // Add your custom onExit code here (if needed)
+
+    CCLayer::onExit();
+}
+
+// -----------------------------------------------------------------------
+
 void LoadScene::loadNext(float dt)
 {
     switch (_loadStep)
