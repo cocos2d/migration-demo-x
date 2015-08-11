@@ -76,6 +76,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // -----------------------------------------------------------------------
     // create the order of which to search resources
+    // We simply add the search paths, based on the content scale factor of the device
+    // As long as the device resolution is kept fixed, this is an extremely easy way of handling all device sizes
+    // The only thing which remain for the user to take into consideration, is how to handle aspect ratios
+    
     // cocos2d-x uses a folder based approach
     std::vector<std::string> searchOrder;
     if (director->getContentScaleFactor() >= 3.0) searchOrder.push_back("4x");

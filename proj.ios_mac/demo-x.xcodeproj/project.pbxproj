@@ -13,6 +13,9 @@
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
 		0E8009F61B72398700D1416E /* 4x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F31B72398700D1416E /* 4x */; };
 		0EE67DE41B7A0E9900B4BEF1 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */; };
+		0EE67DE91B7A142A00B4BEF1 /* SetupScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DE71B7A142A00B4BEF1 /* SetupScene.cpp */; };
+		0EE67DED1B7A14C000B4BEF1 /* Credits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DEB1B7A14C000B4BEF1 /* Credits.cpp */; };
+		0EE67DF01B7A14D100B4BEF1 /* Paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DEE1B7A14D100B4BEF1 /* Paddle.cpp */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -115,6 +118,13 @@
 		0E8009F31B72398700D1416E /* 4x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 4x; sourceTree = "<group>"; };
 		0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		0EE67DE31B7A0E9900B4BEF1 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		0EE67DE71B7A142A00B4BEF1 /* SetupScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetupScene.cpp; sourceTree = "<group>"; };
+		0EE67DE81B7A142A00B4BEF1 /* SetupScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupScene.h; sourceTree = "<group>"; };
+		0EE67DEA1B7A144300B4BEF1 /* GameTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameTypes.h; sourceTree = "<group>"; };
+		0EE67DEB1B7A14C000B4BEF1 /* Credits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Credits.cpp; sourceTree = "<group>"; };
+		0EE67DEC1B7A14C000B4BEF1 /* Credits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credits.h; sourceTree = "<group>"; };
+		0EE67DEE1B7A14D100B4BEF1 /* Paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Paddle.cpp; sourceTree = "<group>"; };
+		0EE67DEF1B7A14D100B4BEF1 /* Paddle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paddle.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -309,12 +319,19 @@
 			children = (
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
+				0EE67DEA1B7A144300B4BEF1 /* GameTypes.h */,
 				46880B8719C43A87006E1F66 /* LoadScene.h */,
 				46880B8619C43A87006E1F66 /* LoadScene.cpp */,
 				0E03429F1B7513AE00017584 /* MainScene.h */,
 				0E03429E1B7513AE00017584 /* MainScene.cpp */,
-				0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */,
 				0EE67DE31B7A0E9900B4BEF1 /* GameScene.h */,
+				0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */,
+				0EE67DE81B7A142A00B4BEF1 /* SetupScene.h */,
+				0EE67DE71B7A142A00B4BEF1 /* SetupScene.cpp */,
+				0EE67DEC1B7A14C000B4BEF1 /* Credits.h */,
+				0EE67DEB1B7A14C000B4BEF1 /* Credits.cpp */,
+				0EE67DEF1B7A14D100B4BEF1 /* Paddle.h */,
+				0EE67DEE1B7A14D100B4BEF1 /* Paddle.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -521,9 +538,12 @@
 				46880B8A19C43A87006E1F66 /* LoadScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				0EE67DED1B7A14C000B4BEF1 /* Credits.cpp in Sources */,
 				0EE67DE41B7A0E9900B4BEF1 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				0EE67DE91B7A142A00B4BEF1 /* SetupScene.cpp in Sources */,
 				0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */,
+				0EE67DF01B7A14D100B4BEF1 /* Paddle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

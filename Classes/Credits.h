@@ -24,36 +24,22 @@
 //
 // ****************************************************************************
 
-#ifndef __MAIN_SCENE_H__
-#define __MAIN_SCENE_H__
+#ifndef __CREDITS_H
+#define __CREDITS_H
 
 #include "cocos2d.h"
 
 // -----------------------------------------------------------------------
 
-class MainScene : public cocos2d::Layer
-{
-protected:
-    cocos2d::Scene *_scene;
-    cocos2d::ui::Scale9Sprite *_background;
-    cocos2d::ProgressTimer *_progress;
-    cocos2d::Sprite *_loading;
-    int _loadStep;
-public:
-    CREATE_FUNC(MainScene);
-    static cocos2d::Scene* createScene();
-    bool init();
-};
+
+
+
+
+
 
 // -----------------------------------------------------------------------
 
-#endif // __MAIN_SCENE_H__
-
-
-
-
-
-
+#endif // __CREDITS_H
 
 
 
