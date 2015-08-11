@@ -13,19 +13,20 @@ Scene* LoadScene::createScene()
      This is how the templates normally create a scene
      If you wonder why scene is based on cocos2d::Layer, and why you cant use create(), here is the explanation
      
-     When creating a scene, you must also have at least one layer. Unlike -objc, you can not add nodes to a scene, only layers.
-     So to avoid creating both a cocos2d::Scene descendant, and a cocos2d::Layer descendant, this hybrid is created.
+     While a Layer is technically not needed, it is often used as the base parent for nodes, because layers 
+     amongst other things handles touches. In order to avoid creating two classes for the templates, it is siply wrapped in one.
      
      So why not simply base it on cocos2d::Scene you ask?
      
-     The reason is as stated above, that you can not add nodes to a scene. So if the class was based on cocos2d::Scene, you could not
-     use the syntax this->addChild in myScene::init. You would have to create a cocos2d::Layer, and add the nodes to that, so you would 
-     end up with this->_layer->addChild, which really isnt all that good programming.
+     The reason is as stated above, that because touch handling goes through layers, adding nodes to a scene will inhibit
+     touch handling on them. Because of that, if the class was based on Scene, you could not use the syntax this->addChild in myScene::init.
+     You would have to create a cocos2d::Layer, and add the nodes to that, so you would end up with this->_layer->addChild, 
+     which would be very error prone.
      
      The final thing needed is a constructor / factory method, since you can not use default MyScene::create, as it would return a cocos2d::Layer.
      Because of that, we use createScene to build the scene + layer hierachy, and then return the scene.
     
-     For an "easier to understand" approach, see MainScene
+     For an "easier to understand" approach, see MainScene / GameScene
     */
 
     // create the scene, which we will later return
