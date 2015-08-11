@@ -84,7 +84,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCFileUtils::getInstance()->setSearchPaths(searchOrder);
 
     // run with scene (see LoadScene::CreateScene for an explanation on the LoadScene setup)
-    director->runWithScene(LoadScene::createScene());
+    director->runWithScene(LoadScene::create());
     // -----------------------------------------------------------------------
     
     return true;

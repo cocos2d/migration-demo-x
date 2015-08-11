@@ -7,9 +7,9 @@ USING_NS_CC;
 
 // -----------------------------------------------------------------------
 
+/*
 Scene* LoadScene::createScene()
 {
-    /*
      This is how the templates normally create a scene
      If you wonder why scene is based on cocos2d::Layer, and why you cant use create(), here is the explanation
      
@@ -27,7 +27,6 @@ Scene* LoadScene::createScene()
      Because of that, we use createScene to build the scene + layer hierachy, and then return the scene.
     
      For an "easier to understand" approach, see MainScene / GameScene
-    */
 
     // create the scene, which we will later return
     auto scene = Scene::create();
@@ -39,6 +38,7 @@ Scene* LoadScene::createScene()
     // return the scene
     return scene;
 }
+*/
 
 // -----------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ bool LoadScene::init()
     // NSAssert(self, @"Whoops");
     
     // ** cocos2d-x *****
-    if (!Layer::init()) CCASSERT(false, "The Kessel Run in 12 parsecs? O'rly?");
+    if (!Scene::init()) CCASSERT(false, "The Kessel Run in 12 parsecs? O'rly?");
     
     // ******************
     // preload artwork needed for load scene
