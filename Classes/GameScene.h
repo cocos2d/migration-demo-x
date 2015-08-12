@@ -29,9 +29,8 @@
 
 #include "cocos2d.h"
 
-// In slightly larger projects, you would probably split this file into a GameScene and a GameLayer file.
-
 // -----------------------------------------------------------------------
+// In slightly larger projects, you would probably split this file into a GameScene and a GameLayer file.
 
 class GameLayer : public cocos2d::Layer
 {

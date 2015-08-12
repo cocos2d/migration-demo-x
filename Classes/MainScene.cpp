@@ -26,8 +26,6 @@
 
 #include "MainScene.h"
 
-USING_NS_CC;
-
 // -----------------------------------------------------------------------
 /*
  This is how the templates normally creates a scene
@@ -50,10 +48,10 @@ USING_NS_CC;
  To see how to build an "easier to understand" scene / layer hierachy, have a look at GameScene
  */
 
-Scene* MainScene::createScene()
+cocos2d::Scene* MainScene::createScene()
 {    
     // create the scene, which we will later return
-    auto scene = Scene::create();
+    auto scene = cocos2d::Scene::create();
     
     // create the layer, and add it to the scene
     auto layer = MainScene::create();
@@ -67,7 +65,7 @@ Scene* MainScene::createScene()
 
 bool MainScene::init()
 {
-    if (!Layer::init()) CCASSERT(false, "I find your lack of faith disturbing");
+    if (!cocos2d::Layer::init()) CCASSERT(false, "I find your lack of faith disturbing");
 
     // initalize the main scene
     

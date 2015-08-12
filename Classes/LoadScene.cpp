@@ -29,8 +29,6 @@
 #include "UIScale9Sprite.h"
 #include <unistd.h>
 
-USING_NS_CC;
-
 // -----------------------------------------------------------------------
 // This scene is created without a layer, as it requires no touch handling
 
@@ -53,7 +51,7 @@ bool LoadScene::init()
     // [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"demo.plist"];
 
     // ** cocos2d-x *****
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("demo.plist");
+    cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("demo.plist");
     
     // ******************
     // get some screen dimensions
@@ -62,8 +60,8 @@ bool LoadScene::init()
     // CGSize size = [CCDirector sharedDirector].viewSize;
     
     // ** cocos2d-x *****
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    Size size = Director::getInstance()->getVisibleSize();
+    cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    cocos2d::Size size = cocos2d::Director::getInstance()->getVisibleSize();
     
     // ******************
     // create background
@@ -78,10 +76,10 @@ bool LoadScene::init()
     
     // ** cocos2d-x *****
     _background = cocos2d::ui::Scale9Sprite::create("white_square.png");
-    _background->setAnchorPoint((cocos2d::Vec2){0, 0});
+    _background->setAnchorPoint(cocos2d::Vec2(0, 0));
     _background->setPosition(origin);
     _background->setContentSize(size);
-    _background->setColor((cocos2d::Color3B){128, 128, 128});
+    _background->setColor(cocos2d::Color3B(128, 128, 128));
     this->addChild(_background);
     
     // ******************
@@ -95,7 +93,7 @@ bool LoadScene::init()
     
     // ** cocos2d-x *****
     _loading = cocos2d::Sprite::createWithSpriteFrameName("loading.png");
-    _loading->setNormalizedPosition((Vec2){0.5, 0.5});
+    _loading->setNormalizedPosition(cocos2d::Vec2(0.5, 0.5));
     this->addChild(_loading);
     
     // ******************
@@ -112,8 +110,8 @@ bool LoadScene::init()
     
     // ** cocos2d-x *****
     _progress = cocos2d::ProgressTimer::create(cocos2d::Sprite::createWithSpriteFrameName("progress.png"));
-    _progress->setNormalizedPosition((Vec2){0.5, 0.5});
-    _progress->setType(ProgressTimer::Type::RADIAL);
+    _progress->setNormalizedPosition(cocos2d::Vec2(0.5, 0.5));
+    _progress->setType(cocos2d::ProgressTimer::Type::RADIAL);
     _progress->setRotation(180);
     _progress->setPercentage(0);
     this->addChild(_progress);
@@ -203,7 +201,7 @@ void LoadScene::loadNext(float dt)
             //                       nil]];
             
             // ** cocos2d-x *****
-            auto scaleProgress = CallFunc::create([this]()
+            auto scaleProgress = cocos2d::CallFunc::create([this]()
             {
                 _progress->runAction(cocos2d::ScaleTo::create(1.0, 5.0));
                 _progress->runAction(cocos2d::FadeOut::create(1.0));
@@ -211,9 +209,9 @@ void LoadScene::loadNext(float dt)
                 
             });
 
-            auto runMainScene = CallFunc::create([this]()
+            auto runMainScene = cocos2d::CallFunc::create([this]()
             {
-                Director::getInstance()->replaceScene(TransitionSlideInR::create(0.5, MainScene::createScene()));
+                cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInR::create(0.5, MainScene::createScene()));
             });
 
             _progress->runAction(cocos2d::Sequence::create(scaleProgress,
@@ -234,7 +232,7 @@ void LoadScene::loadNext(float dt)
 
 void LoadScene::menuCloseCallback(Ref* pSender)
 {
-    Director::getInstance()->end();
+    cocos2d::Director::getInstance()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);

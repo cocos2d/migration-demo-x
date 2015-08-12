@@ -26,29 +26,82 @@
 
 #include "Paddle.h"
 
-USING_NS_CC;
+// -----------------------------------------------------------------------
+
+Paddle::Paddle()
+: _side(Side::INVALID)
+, _destination(cocos2d::Vec2(0, 0))
+{
+    // create anything here which should last for the entire lifespan of the paddle
+}
+
+Paddle::~Paddle()
+{
+    // clean up
+    
+}
+
+Paddle* Paddle::createWithSide(Paddle::Side side)
+{
+    Paddle *paddle = new (std::nothrow) Paddle();
+    CCASSERT(paddle, "You must unlearn, what you have learned");
+    
+    if (paddle->initWithSide(side))
+    {
+        paddle->autorelease();
+        return paddle;
+    }
+    CC_SAFE_DELETE(paddle);
+    return nullptr;
+}
 
 // -----------------------------------------------------------------------
 
+bool Paddle::initWithSide(Paddle::Side side)
+{
+    if (!Sprite::initWithSpriteFrameName("paddle.png")) CCASSERT(false, "The force is strong with this one");
 
+    _side = side;
 
-
-
-
-
-
-
-
+    return true;
+}
 
 // -----------------------------------------------------------------------
 
+Paddle::Side Paddle::getSide()
+{
+    return _side;
+}
 
+// -----------------------------------------------------------------------
 
+cocos2d::Vec2 Paddle::getDestination()
+{
+    return _destination;
+}
 
+// -----------------------------------------------------------------------
 
+void Paddle::setDestination(cocos2d::Vec2 destination)
+{
 
+    
+    
+    
+    _destination = destination;
+}
 
+// -----------------------------------------------------------------------
 
+bool validTouchPosition(cocos2d::Vec2 position)
+{
+    
+    
+    
+    return false;
+}
+
+// -----------------------------------------------------------------------
 
 
 

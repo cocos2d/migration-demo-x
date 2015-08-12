@@ -31,13 +31,30 @@
 
 // -----------------------------------------------------------------------
 
-
-
-
-
-
-
-
+class Paddle : public cocos2d::Sprite
+{
+public:
+    enum class Side
+    {
+        LEFT,
+        RIGHT,
+        INVALID
+    };
+    Paddle();
+    ~Paddle();
+    
+    static Paddle* createWithSide(Paddle::Side side);
+    virtual bool initWithSide(Paddle::Side side);
+    
+    Paddle::Side getSide();
+    cocos2d::Vec2 getDestination();
+    void setDestination(cocos2d::Vec2 destination);
+    bool validTouchPosition(cocos2d::Vec2 position);
+protected:
+private:
+    Paddle::Side _side;
+    cocos2d::Vec2 _destination;
+};
 
 // -----------------------------------------------------------------------
 
