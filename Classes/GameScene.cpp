@@ -30,8 +30,9 @@
 #include "GameTypes.h"
 
 // -----------------------------------------------------------------------
-#pragma mark - GameLayer Implementation
+#pragma mark - GameLayer Implementation -
 // -----------------------------------------------------------------------
+#pragma mark Initialization
 
 bool GameLayer::init()
 {
@@ -63,9 +64,26 @@ bool GameLayer::init()
     this->addChild(backButton);
     
     // draw touch area markers
+    cocos2d::DrawNode *drawNode = cocos2d::DrawNode::create();
+    this->addChild(drawNode);
     
+    drawNode->drawLine(_gameOrigin + cocos2d::Vec2(kGamePaddleTouchArea * _gameSize.width, 0),
+                       _gameOrigin + cocos2d::Vec2(kGamePaddleTouchArea * _gameSize.width, _gameSize.height),
+                       cocos2d::Color4F(kGameColor));
+    drawNode->drawLine(_gameOrigin + cocos2d::Vec2((1 - kGamePaddleTouchArea) * _gameSize.width, 0),
+                       _gameOrigin + cocos2d::Vec2((1 - kGamePaddleTouchArea) * _gameSize.width, _gameSize.height),
+                       cocos2d::Color4F(kGameColor));
     
+    // initialize touch handling
+    cocos2d::EventListenerTouchAllAtOnce *listener = cocos2d::EventListenerTouchAllAtOnce::create();
     
+    listener->onTouchesBegan = CC_CALLBACK_2(GameLayer::onTouchesBegan, this);
+    listener->onTouchesMoved = CC_CALLBACK_2(GameLayer::onTouchesMoved, this);
+    listener->onTouchesEnded = CC_CALLBACK_2(GameLayer::onTouchesEnded, this);
+    listener->onTouchesCancelled = CC_CALLBACK_2(GameLayer::onTouchesCancelled, this);
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
     
     
     
@@ -78,6 +96,7 @@ bool GameLayer::init()
 }
 
 // -----------------------------------------------------------------------
+#pragma mark Enter & Exit
 
 void GameLayer::onEnter()
 {
@@ -95,10 +114,88 @@ void GameLayer::onExit()
     cocos2d::Layer::onExit();
 }
 
+// -----------------------------------------------------------------------
+#pragma mark Touch Handling
+
+void GameLayer::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+    for (cocos2d::Touch *touch : touches)
+    {
+        Paddle *paddle = nullptr;
+        cocos2d::Vec2 position = touch->getLocation() - _gameOrigin;
+        
+        // find out if valid paddle position
+        if (_paddleLeft->validTouchPosition(position)) paddle = _paddleLeft;
+        if (_paddleRight->validTouchPosition(position)) paddle = _paddleRight;
+        
+        if (paddle != nullptr)
+        {
+            // if paddle already has a touch assigned, create a game tilt
+            if (paddle->getTouch() != nullptr)
+            {
+                this->gameTilt();
+            }
+            else
+            {
+                // paddle touch started
+                paddle->setTouch(touch);
+                paddle->setDestination(position.y);
+            }
+        }
+    }
+}
+
+void GameLayer::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+    for (cocos2d::Touch *touch : touches)
+    {
+        Paddle *paddle = nullptr;
+        cocos2d::Vec2 position = touch->getLocation() - _gameOrigin;
+
+        if (touch == _paddleLeft->getTouch()) paddle = _paddleLeft;
+        else if (touch == _paddleRight->getTouch()) paddle = _paddleRight;
+        
+        if (paddle != nullptr)
+        {
+            if (paddle->validTouchPosition(position))
+            {
+                paddle->setDestination(position.y);
+            }
+            else
+            {
+                paddle->setTouch(nullptr);
+            }
+        }
+    }
+}
+
+void GameLayer::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+    for (cocos2d::Touch *touch : touches)
+    {
+        if (touch == _paddleLeft->getTouch()) _paddleLeft->setTouch(nullptr);
+        else if (touch == _paddleRight->getTouch()) _paddleRight->setTouch(nullptr);
+    }
+}
+
+void GameLayer::onTouchesCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+    // treat cancelled touches as ended touches
+    this->onTouchesEnded(touches, event);
+}
 
 // -----------------------------------------------------------------------
-#pragma mark - GameScene Implementation
+#pragma mark Game functionality
+
+void GameLayer::gameTilt()
+{
+    CCLOG("GAME TILT!");
+}
+
 // -----------------------------------------------------------------------
+#pragma mark - GameScene Implementation -
+// -----------------------------------------------------------------------
+#pragma mark Initialization
 
 bool GameScene::init()
 {

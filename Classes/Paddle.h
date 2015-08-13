@@ -47,13 +47,19 @@ public:
     virtual bool initWithSide(Paddle::Side side);
     
     Paddle::Side getSide();
-    cocos2d::Vec2 getDestination();
-    void setDestination(cocos2d::Vec2 destination);
+    float getDestination();
+    void setDestination(float destination);
     bool validTouchPosition(cocos2d::Vec2 position);
+    cocos2d::Touch* getTouch();
+    void setTouch(cocos2d::Touch *touch);
+    void update(float delta);
 protected:
 private:
     Paddle::Side _side;
-    cocos2d::Vec2 _destination;
+    float _destination;
+    cocos2d::Vec2 _gameOrigin;
+    cocos2d::Size _gameSize;
+    cocos2d::Touch *_touch;
 };
 
 // -----------------------------------------------------------------------

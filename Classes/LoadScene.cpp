@@ -72,7 +72,7 @@ bool LoadScene::init()
     // background.anchorPoint = CGPointZero;
     // background.position = CGPointZero;
     // background.contentSize = size;
-    // background.color = kGameLoadColor;
+    // background.color = kGameLoadSceneColor;
     // [self addChild:background];
     
     // ** cocos2d-x *****
@@ -80,7 +80,7 @@ bool LoadScene::init()
     _background->setAnchorPoint(cocos2d::Vec2(0, 0));
     _background->setPosition(origin);
     _background->setContentSize(size);
-    _background->setColor(kGameLoadColor);
+    _background->setColor(kGameLoadSceneColor);
     this->addChild(_background);
     
     // ******************
@@ -218,7 +218,7 @@ void LoadScene::loadNext(float dt)
             _progress->runAction(cocos2d::Sequence::create(scaleProgress,
                                                            cocos2d::DelayTime::create(1.5),
                                                            runMainScene,
-                                                           NULL));
+                                                           nullptr));
             // ******************
             
             break;

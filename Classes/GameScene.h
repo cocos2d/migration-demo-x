@@ -48,6 +48,13 @@ public:
     virtual bool init();
     virtual void onEnter();
     virtual void onExit();
+    // These are the touch functions we need to implement
+    void onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
+    void onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
+    void onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
+    void onTouchesCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
+    // game functions
+    void gameTilt();
 };
 
 // -----------------------------------------------------------------------

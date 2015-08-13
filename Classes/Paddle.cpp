@@ -25,12 +25,15 @@
 // ****************************************************************************
 
 #include "Paddle.h"
+#include "GameTypes.h"
 
 // -----------------------------------------------------------------------
 
 Paddle::Paddle()
 : _side(Side::INVALID)
-, _destination(cocos2d::Vec2(0, 0))
+, _destination(0)
+, _gameSize(cocos2d::Vec2(0, 0))
+, _touch(nullptr)
 {
     // create anything here which should last for the entire lifespan of the paddle
 }
@@ -61,7 +64,17 @@ bool Paddle::initWithSide(Paddle::Side side)
 {
     if (!Sprite::initWithSpriteFrameName("paddle.png")) CCASSERT(false, "The force is strong with this one");
 
+    // get origin and size of game area
+    _gameOrigin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    _gameSize = cocos2d::Director::getInstance()->getVisibleSize();
+    
     _side = side;
+
+    float x = (side == Paddle::Side::LEFT) ? kGamePaddleInset * _gameSize.width : (1 - kGamePaddleInset) * _gameSize.width;
+    _destination = _gameSize.height * 0.5;
+    this->setPosition(_gameOrigin + cocos2d::Vec2(x, _destination));
+    
+    this->scheduleUpdate();
 
     return true;
 }
@@ -75,33 +88,74 @@ Paddle::Side Paddle::getSide()
 
 // -----------------------------------------------------------------------
 
-cocos2d::Vec2 Paddle::getDestination()
+float Paddle::getDestination()
 {
     return _destination;
 }
 
-// -----------------------------------------------------------------------
-
-void Paddle::setDestination(cocos2d::Vec2 destination)
+void Paddle::setDestination(float destination)
 {
-
-    
-    
-    
+    float limit = this->getContentSize().height * 0.5;
+    if (destination < limit) destination = limit;
+    if (destination > (_gameSize.height - limit)) destination = _gameSize.height - limit;
     _destination = destination;
 }
 
 // -----------------------------------------------------------------------
 
-bool validTouchPosition(cocos2d::Vec2 position)
+cocos2d::Touch* Paddle::getTouch()
 {
-    
-    
-    
+    return _touch;
+}
+
+void Paddle::setTouch(cocos2d::Touch *touch)
+{
+    _touch = touch;
+}
+
+// -----------------------------------------------------------------------
+
+bool Paddle::validTouchPosition(cocos2d::Vec2 position)
+{
+    if (_side == Paddle::Side::LEFT) return (position.x < (kGamePaddleTouchArea * _gameSize.width));
+    if (_side == Paddle::Side::RIGHT) return (position.x > ((1 - kGamePaddleTouchArea) * _gameSize.width));
     return false;
 }
 
 // -----------------------------------------------------------------------
+
+void Paddle::update(float delta)
+{
+    // move to destination at light speed
+    // calculate remaining distance and step
+    float remainingDistance = fabs(this->getPosition().y - _destination);
+    float step = kGamePaddleSpeed * _gameSize.height * delta;
+    
+    if (step > remainingDistance)
+    {
+        // if close enough, complete move to destination
+        this->setPosition(this->getPosition().x, _destination);
+    }
+    else
+    {
+        // else step towards desination
+        if (_destination > this->getPosition().y)
+        {
+            this->setPosition(this->getPosition() + cocos2d::Vec2(0, step));
+        }
+        else
+        {
+            this->setPosition(this->getPosition() - cocos2d::Vec2(0, step));
+        }
+    }
+}
+
+// -----------------------------------------------------------------------
+
+
+
+
+
 
 
 

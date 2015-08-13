@@ -25,6 +25,8 @@
 // ****************************************************************************
 
 #include "SetupScene.h"
+#include "UIButton.h"
+#include "MainScene.h"
 
 // -----------------------------------------------------------------------
 
@@ -44,6 +46,15 @@ bool SetupScene::init()
 
 
 
+    // create a back button
+    cocos2d::ui::Button *backButton = cocos2d::ui::Button::create("back.png", "back.png", "back.png", cocos2d::ui::Button::TextureResType::PLIST);
+    backButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.1));
+    backButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                      {
+                                          // Send us back to main screen
+                                          cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInT::create(0.5, MainScene::createScene()));
+                                      });
+    this->addChild(backButton);
 
     return true;
 }

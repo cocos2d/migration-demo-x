@@ -81,7 +81,7 @@ bool MainScene::init()
     background->setAnchorPoint(cocos2d::Vec2(0, 0));
     background->setPosition(origin);
     background->setContentSize(size);
-    background->setColor(kGameContrastColor);
+    background->setColor(kGameMainSceneColor);
     this->addChild(background);
     
     // start button
