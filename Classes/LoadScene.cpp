@@ -28,6 +28,7 @@
 #include "MainScene.h"
 #include "UIScale9Sprite.h"
 #include <unistd.h>
+#include "GameTypes.h"
 
 // -----------------------------------------------------------------------
 // This scene is created without a layer, as it requires no touch handling
@@ -71,7 +72,7 @@ bool LoadScene::init()
     // background.anchorPoint = CGPointZero;
     // background.position = CGPointZero;
     // background.contentSize = size;
-    // background.color = [CCColor grayColor];
+    // background.color = kGameLoadColor;
     // [self addChild:background];
     
     // ** cocos2d-x *****
@@ -79,7 +80,7 @@ bool LoadScene::init()
     _background->setAnchorPoint(cocos2d::Vec2(0, 0));
     _background->setPosition(origin);
     _background->setContentSize(size);
-    _background->setColor(cocos2d::Color3B(128, 128, 128));
+    _background->setColor(kGameLoadColor);
     this->addChild(_background);
     
     // ******************
@@ -201,7 +202,7 @@ void LoadScene::loadNext(float dt)
             //                       nil]];
             
             // ** cocos2d-x *****
-            auto scaleProgress = cocos2d::CallFunc::create([this]()
+            auto scaleProgress = cocos2d::CallFunc::create([&]()
             {
                 _progress->runAction(cocos2d::ScaleTo::create(1.0, 5.0));
                 _progress->runAction(cocos2d::FadeOut::create(1.0));
@@ -209,7 +210,7 @@ void LoadScene::loadNext(float dt)
                 
             });
 
-            auto runMainScene = cocos2d::CallFunc::create([this]()
+            auto runMainScene = cocos2d::CallFunc::create([&]()
             {
                 cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInR::create(0.5, MainScene::createScene()));
             });

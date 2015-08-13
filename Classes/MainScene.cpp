@@ -25,6 +25,11 @@
 // ****************************************************************************
 
 #include "MainScene.h"
+#include "UIScale9Sprite.h"
+#include "UIButton.h"
+#include "GameScene.h"
+#include "SetupScene.h"
+#include "GameTypes.h"
 
 // -----------------------------------------------------------------------
 /*
@@ -68,12 +73,62 @@ bool MainScene::init()
     if (!cocos2d::Layer::init()) CCASSERT(false, "I find your lack of faith disturbing");
 
     // initalize the main scene
+    cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    cocos2d::Size size = cocos2d::Director::getInstance()->getVisibleSize();
+    
+    // add a solid colored node
+    cocos2d::ui::Scale9Sprite *background = cocos2d::ui::Scale9Sprite::create("white_square.png");
+    background->setAnchorPoint(cocos2d::Vec2(0, 0));
+    background->setPosition(origin);
+    background->setContentSize(size);
+    background->setColor(kGameContrastColor);
+    this->addChild(background);
+    
+    // start button
+    cocos2d::ui::Button *startButton = cocos2d::ui::Button::create("start.png", "start.png", "start.png", cocos2d::ui::Button::TextureResType::PLIST);
+    startButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.6));
+    startButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                       {
+                                           // Here you can check if the button was pressed or released
+                                           // For now we are just happy that something happened ...
+                                           // Launch the game scene
+                                           cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInT::create(0.5, GameScene::create()));
+                                       });
+    this->addChild(startButton);
+    
+    // setup button
+    cocos2d::ui::Button *setupButton = cocos2d::ui::Button::create("setup.png", "setup.png", "setup.png", cocos2d::ui::Button::TextureResType::PLIST);
+    setupButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.4));
+    setupButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                       {
+                                           // Launch setup screen
+                                           cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInB::create(0.5, SetupScene::createScene()));
+                                       });
+    this->addChild(setupButton);
+    
+    // info button
+    cocos2d::ui::Button *infoButton = cocos2d::ui::Button::create("info.png", "info.png", "info.png", cocos2d::ui::Button::TextureResType::PLIST);
+    infoButton->setNormalizedPosition(cocos2d::Vec2(0.88, 0.1));
+    infoButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                      {
+                                          // Launch credits overlay
+                                          this->infoPressed();
+                                      });
+    this->addChild(infoButton);
+    
+    // and we are out of here
+    return true;
+}
+
+// -----------------------------------------------------------------------
+
+void MainScene::infoPressed()
+{
     
 
 
 
-    // and we are out of here
-    return true;
+
 }
 
 // -----------------------------------------------------------------------

@@ -28,12 +28,19 @@
 #define __GAME_LAYER_PLUS_SCENE_H__
 
 #include "cocos2d.h"
+#include "Paddle.h"
 
 // -----------------------------------------------------------------------
 // In slightly larger projects, you would probably split this file into a GameScene and a GameLayer file.
 
 class GameLayer : public cocos2d::Layer
 {
+private:
+    cocos2d::Vec2 _gameOrigin;
+    cocos2d::Size _gameSize;
+    Paddle *_paddleLeft;
+    Paddle *_paddleRight;
+    cocos2d::Sprite *_ball;
 protected:
     cocos2d::Sprite *_loading;
 public:

@@ -43,6 +43,7 @@ public:
     CREATE_FUNC(MainScene);
     static cocos2d::Scene* createScene();
     bool init();
+    void infoPressed();
 };
 
 // -----------------------------------------------------------------------

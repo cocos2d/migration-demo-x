@@ -31,11 +31,13 @@
 
 // -----------------------------------------------------------------------
 
-
-
-
-
-
+class SetupScene : public cocos2d::Layer
+{
+public:
+    CREATE_FUNC(SetupScene);
+    static cocos2d::Scene* createScene();
+    bool init();
+};
 
 // -----------------------------------------------------------------------
 

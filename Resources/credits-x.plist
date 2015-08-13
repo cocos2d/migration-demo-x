@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>image</key>
+	<string>angry.png</string>
+	<key>use.greyscale</key>
+	<string>1</string>
+	<key>spacing</key>
+	<string>0.1</string>
+	<key>scroll.speed</key>
+	<string>0.125</string>
+	<key>music</key>
+	<string>cocos2d_blues.wav</string>
+	<key>section - 1</key>
+	<dict>
+		<key>header</key>
+		<string>Cocod2D was made by</string>
+		<key>credit - 1</key>
+		<string>dumganhar</string>
+		<key>credit - 2</key>
+		<string>minggo</string>
+		<key>credit - 3</key>
+		<string>CocosRobot</string>
+		<key>credit - 4</key>
+		<string>zilongshanren</string>
+		<key>credit - 5</key>
+		<string>samuele3hu</string>
+		<key>credit - 6</key>
+		<string>Ricardo Quesada</string>
+		<key>credit - 7</key>
+		<string>WenhaiLin</string>
+		<key>credit - 8</key>
+		<string>dabingnn</string>
+		<key>credit - 9</key>
+		<string>walzer</string>
+		<key>credit - 10</key>
+		<string>super626</string>
+		<key>credit - 11</key>
+		<string>stammen</string>
+		<key>credit - 12</key>
+		<string>natural-law</string>
+		<key>credit - 13</key>
+		<string>j4m3z0r</string>
+		<key>credit - 14</key>
+		<string>boyu0</string>
+		<key>credit - 15</key>
+		<string>yangws</string>
+		<key>credit - 16</key>
+		<string>folecr</string>
+		<key>credit - 17</key>
+		<string>dualface</string>
+		<key>credit - 18</key>
+		<string>angeltown</string>
+		<key>credit - 19</key>
+		<string>pandamico</string>
+		<key>credit - 20</key>
+		<string>pipu</string>
+		<key>credit - 21</key>
+		<string>jiusheng</string>
+		<key>credit - 22</key>
+		<string>nutty898</string>
+		<key>credit - 23</key>
+		<string>darkdukey</string>
+		<key>credit - 24</key>
+		<string>lvlonggame</string>
+		<key>credit - 25</key>
+		<string>funkaster</string>
+		<key>credit - 26</key>
+		<string>2youyouo2</string>
+		<key>credit - 27</key>
+		<string>pyrasis</string>
+		<key>credit - 28</key>
+		<string>carlomorgantinizynga</string>
+		<key>credit - 29</key>
+		<string>tangziwen</string>
+		<key>credit - 30</key>
+		<string>chengstory</string>
+		<key>credit - 31</key>
+		<string>rohankurvilla</string>
+		<key>credit - 32</key>
+		<string>- and countless other passionate people - </string>
+	</dict>
+	<key>section - 2</key>
+	<dict>
+		<key>header</key>
+		<string>Music</string>
+		<key>credit - 1</key>
+		<string>The Cocos2D Blues</string>
+		<key>credit - 2</key>
+		<string>Written and performed by Lars Birkemose</string>
+	</dict>
+	<key>endgame</key>
+	<dict>
+		<key>credit - 1</key>
+		<string>Cocos2D-x</string>
+		<key>credit - 2</key>
+		<string>2015</string>
+	</dict>
+</dict>
+</plist>

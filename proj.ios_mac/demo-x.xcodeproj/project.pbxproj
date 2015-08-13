@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E03429E1B7513AE00017584 /* MainScene.cpp */; };
+		0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E11257C1B7C9DF9005412C8 /* credits-x.plist */; };
 		0E8009E41B722F0F00D1416E /* white_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009E31B722F0F00D1416E /* white_square.png */; };
 		0E8009F41B72398700D1416E /* 1x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F11B72398700D1416E /* 1x */; };
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
@@ -106,6 +107,7 @@
 /* Begin PBXFileReference section */
 		0E03429E1B7513AE00017584 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
 		0E03429F1B7513AE00017584 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
+		0E11257C1B7C9DF9005412C8 /* credits-x.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "credits-x.plist"; sourceTree = "<group>"; };
 		0E8009E31B722F0F00D1416E /* white_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_square.png; sourceTree = "<group>"; };
 		0E8009F11B72398700D1416E /* 1x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1x; sourceTree = "<group>"; };
 		0E8009F21B72398700D1416E /* 2x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2x; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0E11257C1B7C9DF9005412C8 /* credits-x.plist */,
 				0E8009E31B722F0F00D1416E /* white_square.png */,
 				0E8009F11B72398700D1416E /* 1x */,
 				0E8009F21B72398700D1416E /* 2x */,
@@ -417,7 +420,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0640;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = MDDB52YB8L;
@@ -486,6 +489,7 @@
 				0E8009E41B722F0F00D1416E /* white_square.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				0E8009F61B72398700D1416E /* 4x in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
@@ -572,6 +576,7 @@
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_SHADOW = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -608,6 +613,7 @@
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_SHADOW = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -633,9 +639,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -666,9 +672,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -700,8 +706,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos",
@@ -729,8 +736,9 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos",

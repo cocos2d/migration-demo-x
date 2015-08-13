@@ -29,10 +29,25 @@
 
 // -----------------------------------------------------------------------
 
+#define kGameLoadColor                  cocos2d::Color3B(8, 42, 50)
+#define kGameContrastColor              cocos2d::Color3B(15, 85, 100)
 
+#define kGrossiniJumpTime               1.0
+#define kGrossiniJumps                  5
 
+#define kGamePaddleInset                90
+#define kGamePaddleTouchArea            250
 
+#define kGamePaddleSpeed                800
+#define kGameBallSpeed                  1200
 
+#define kGameSpinFactor                 0.25
+#define kGameSpinRandomFactor           0.15
+
+#define kGameSliderEndStop              15
+
+#define kGameKeySoundVolume             @"sound.volume"
+#define kGameKeyMusicVolume             @"music.volume"
 
 // -----------------------------------------------------------------------
 

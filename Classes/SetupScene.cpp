@@ -28,14 +28,25 @@
 
 // -----------------------------------------------------------------------
 
+cocos2d::Scene* SetupScene::createScene()
+{
+    auto scene = cocos2d::Scene::create();
+    auto layer = SetupScene::create();
+    scene->addChild(layer);
+    return scene;
+}
+
+// -----------------------------------------------------------------------
+
+bool SetupScene::init()
+{
+    if (!cocos2d::Layer::init()) CCASSERT(false, "I’ve got a very bad feeling about this.");
 
 
 
 
-
-
-
-
+    return true;
+}
 
 // -----------------------------------------------------------------------
 

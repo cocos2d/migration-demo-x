@@ -25,6 +25,9 @@
 // ****************************************************************************
 
 #include "GameScene.h"
+#include "UIButton.h"
+#include "MainScene.h"
+#include "GameTypes.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - GameLayer Implementation
@@ -34,9 +37,42 @@ bool GameLayer::init()
 {
     if (!cocos2d::Layer::init()) CCASSERT(false, "You don't need to see my identification!");
     
-    _loading = cocos2d::Sprite::createWithSpriteFrameName("loading.png");
-    _loading->setNormalizedPosition(cocos2d::Vec2(0.5, 0.5));
-    this->addChild(_loading);
+    // get origin and size of game area
+    _gameOrigin = cocos2d::Director::getInstance()->getVisibleOrigin();
+    _gameSize = cocos2d::Director::getInstance()->getVisibleSize();
+    
+    // create paddles
+    _paddleLeft = Paddle::createWithSide(Paddle::Side::LEFT);
+    this->addChild(_paddleLeft);
+    
+    _paddleRight = Paddle::createWithSide(Paddle::Side::RIGHT);
+    this->addChild(_paddleRight);
+    
+    // create the ball
+    _ball = cocos2d::Sprite::createWithSpriteFrameName("ball.png");
+    this->addChild(_ball);
+    
+    // create a back button
+    cocos2d::ui::Button *backButton = cocos2d::ui::Button::create("back.png", "back.png", "back.png", cocos2d::ui::Button::TextureResType::PLIST);
+    backButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.1));
+    backButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                      {
+                                          // Send us back to main screen
+                                          cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionSlideInB::create(0.5, MainScene::createScene()));
+                                      });
+    this->addChild(backButton);
+    
+    // draw touch area markers
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     return true;
 }
