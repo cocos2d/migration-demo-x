@@ -84,13 +84,8 @@ bool GameLayer::init()
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-    
-    
-    
-    
-    
-    
-    
+    // serve first ball from random side
+    this->serveFromSide(Paddle::Side::INVALID);
     
     return true;
 }
@@ -98,20 +93,14 @@ bool GameLayer::init()
 // -----------------------------------------------------------------------
 #pragma mark Enter & Exit
 
-void GameLayer::onEnter()
+void GameLayer::onEnterTransitionDidFinish()
 {
-    cocos2d::Layer::onEnter();
-    
-    // Add your custom onEnter code here (if needed)
-    
+    this->scheduleUpdate();
 }
 
-void GameLayer::onExit()
+void GameLayer::onExitTransitionDidStart()
 {
-    
-    // Add your custom onExit code here (if needed)
-    
-    cocos2d::Layer::onExit();
+    this->unscheduleUpdate();
 }
 
 // -----------------------------------------------------------------------
@@ -185,11 +174,119 @@ void GameLayer::onTouchesCancelled(const std::vector<cocos2d::Touch *> &touches,
 }
 
 // -----------------------------------------------------------------------
+#pragma mark Scheduled update
+
+void GameLayer::update(float delta)
+{
+    // move ball
+    _ball->setPosition(_ball->getPosition() + (_ballVector * delta));
+    
+    // *************************
+    // Game Logic
+    // *************************
+
+    // a convenient value
+    cocos2d::Vec2 offset = cocos2d::Vec2((_paddleLeft->getContentSize().width + _ball->getContentSize().width) * 0.5, 0);
+
+    // check if ball collides with left paddle
+    if (_paddleLeft->getBoundingBox().intersectsRect(_ball->getBoundingBox()))
+    {
+        // play an annoying sound
+        
+        // move ball out of paddle
+        // in theory, the ball should be moved as much away from the paddle as it has penetrated
+        // also, depending on penetration, collision point should be adjusted, but that is for the feinsmeckers out there ...
+        _ball->setPosition(cocos2d::Vec2(_paddleLeft->getPosition().x, _ball->getPosition().y) + offset);
+        // change direction
+        _ballVector.x = -_ballVector.x;
+        
+        // add some ball spin
+        // if ball is hit in upper half, spin the ball upwards, and downwards if hit in lower half
+        float spin = (_ball->getPosition().y - _paddleLeft->getPosition().y) / _gameSize.height * kGameSpinFactor;
+        // add some randomness
+        spin += (CCRANDOM_MINUS1_1() * kGameSpinRandomFactor);
+        // adjust vector
+        _ballVector.rotate(cocos2d::Vec2(0, 0), spin * M_PI / 180);
+    }
+    // check if ball collides with right paddle
+    else if (_paddleRight->getBoundingBox().intersectsRect(_ball->getBoundingBox()))
+    {
+        // see above
+    
+        _ball->setPosition(cocos2d::Vec2(_paddleRight->getPosition().x, _ball->getPosition().y) - offset);
+        _ballVector.x = -_ballVector.x;
+        float spin = (_paddleRight->getPosition().y - _ball->getPosition().y) / _gameSize.height * kGameSpinFactor;
+        spin += (CCRANDOM_MINUS1_1() * kGameSpinRandomFactor);
+        _ballVector.rotate(cocos2d::Vec2(0, 0), spin * M_PI / 180);
+    }
+    
+    // some convenient data
+    float halfABallSize = _ball->getContentSize().height * 0.5;
+    
+    // check for top collision
+    if (_ball->getPosition().y > (_gameSize.height - halfABallSize))
+    {
+        // that annoying sound again
+        
+        // adjust ball position (see discussion on hitting game paddle)
+        _ball->setPosition(_ball->getPosition().x, _gameSize.height - halfABallSize);
+        // change direction
+        _ballVector.y = -_ballVector.y;
+    }
+    // else check for bottom collision
+    else if (_ball->getPosition().y < halfABallSize)
+    {
+        // see above
+        
+        _ball->setPosition(_ball->getPosition().x, halfABallSize);
+        _ballVector.y = -_ballVector.y;
+    }
+    
+    // check if right paddle scored
+    if (_ball->getPosition().x < -halfABallSize)
+    {
+        // play another deeply disturbing sound, to let the world know a point was gained
+        
+        // keep track of some scores
+        
+        
+        // new balls please
+        this->serveFromSide(Paddle::Side::RIGHT);
+    }
+    // else check if left paddle scored
+    else if (_ball->getPosition().x > (_gameSize.width + halfABallSize))
+    {
+        // see above
+    
+        this->serveFromSide(Paddle::Side::LEFT);
+    }
+}
+
+// -----------------------------------------------------------------------
 #pragma mark Game functionality
 
 void GameLayer::gameTilt()
 {
     CCLOG("GAME TILT!");
+}
+
+void GameLayer::serveFromSide(Paddle::Side side)
+{
+    // if invalid side, serve random
+    if (side == Paddle::Side::INVALID) side = (CCRANDOM_0_1() > 0.5) ? Paddle::Side::LEFT : Paddle::Side::RIGHT;
+    
+    cocos2d::Vec2 offset = cocos2d::Vec2((_paddleLeft->getContentSize().width + _ball->getContentSize().width) * 0.5, 0);
+
+    if (side == Paddle::Side::LEFT)
+    {
+        _ball->setPosition(_paddleLeft->getPosition() + offset);
+         _ballVector = cocos2d::Vec2(kGameBallSpeed * _gameSize.width, 0);
+    }
+    else
+    {
+        _ball->setPosition(_paddleRight->getPosition() - offset);
+        _ballVector = cocos2d::Vec2(-kGameBallSpeed * _gameSize.width, 0);
+    }
 }
 
 // -----------------------------------------------------------------------

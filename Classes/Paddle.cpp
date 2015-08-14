@@ -162,5 +162,3 @@ void Paddle::update(float delta)
 
 
 
-
-

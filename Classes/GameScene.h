@@ -41,20 +41,24 @@ private:
     Paddle *_paddleLeft;
     Paddle *_paddleRight;
     cocos2d::Sprite *_ball;
+    cocos2d::Vec2 _ballVector;
 protected:
     cocos2d::Sprite *_loading;
 public:
     CREATE_FUNC(GameLayer);
     virtual bool init();
-    virtual void onEnter();
-    virtual void onExit();
+    void onEnterTransitionDidFinish();
+    void onExitTransitionDidStart();
     // These are the touch functions we need to implement
     void onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
     void onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
     void onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
     void onTouchesCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
+    // scheduled update
+    void update(float delta);
     // game functions
     void gameTilt();
+    void serveFromSide(Paddle::Side side);
 };
 
 // -----------------------------------------------------------------------
