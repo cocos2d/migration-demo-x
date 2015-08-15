@@ -28,6 +28,7 @@
 #include "UIButton.h"
 #include "MainScene.h"
 #include "GameTypes.h"
+#include "SimpleAudioEngine.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - GameLayer Implementation -
@@ -192,7 +193,7 @@ void GameLayer::update(float delta)
     if (_paddleLeft->getBoundingBox().intersectsRect(_ball->getBoundingBox()))
     {
         // play an annoying sound
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("beep.wav");
         // move ball out of paddle
         // in theory, the ball should be moved as much away from the paddle as it has penetrated
         // also, depending on penetration, collision point should be adjusted, but that is for the feinsmeckers out there ...
@@ -212,7 +213,7 @@ void GameLayer::update(float delta)
     else if (_paddleRight->getBoundingBox().intersectsRect(_ball->getBoundingBox()))
     {
         // see above
-    
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("beep.wav");
         _ball->setPosition(cocos2d::Vec2(_paddleRight->getPosition().x, _ball->getPosition().y) - offset);
         _ballVector.x = -_ballVector.x;
         float spin = (_paddleRight->getPosition().y - _ball->getPosition().y) / _gameSize.height * kGameSpinFactor;
@@ -227,7 +228,7 @@ void GameLayer::update(float delta)
     if (_ball->getPosition().y > (_gameSize.height - halfABallSize))
     {
         // that annoying sound again
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("beep.wav");
         // adjust ball position (see discussion on hitting game paddle)
         _ball->setPosition(_ball->getPosition().x, _gameSize.height - halfABallSize);
         // change direction
@@ -237,7 +238,7 @@ void GameLayer::update(float delta)
     else if (_ball->getPosition().y < halfABallSize)
     {
         // see above
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("beep.wav");
         _ball->setPosition(_ball->getPosition().x, halfABallSize);
         _ballVector.y = -_ballVector.y;
     }
@@ -246,7 +247,7 @@ void GameLayer::update(float delta)
     if (_ball->getPosition().x < -halfABallSize)
     {
         // play another deeply disturbing sound, to let the world know a point was gained
-        
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("game.wav");
         // keep track of some scores
         
         
@@ -257,7 +258,7 @@ void GameLayer::update(float delta)
     else if (_ball->getPosition().x > (_gameSize.width + halfABallSize))
     {
         // see above
-    
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("game.wav");
         this->serveFromSide(Paddle::Side::LEFT);
     }
 }

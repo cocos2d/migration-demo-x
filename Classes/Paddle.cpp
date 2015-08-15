@@ -35,14 +35,15 @@ Paddle::Paddle()
 , _gameSize(cocos2d::Vec2(0, 0))
 , _touch(nullptr)
 {
-    // create anything here which should last for the entire lifespan of the paddle
+    // default constructor
 }
 
 Paddle::~Paddle()
 {
-    // clean up
-    
+    // destructor
 }
+
+// -----------------------------------------------------------------------
 
 Paddle* Paddle::createWithSide(Paddle::Side side)
 {

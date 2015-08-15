@@ -29,6 +29,7 @@
 #include "UIScale9Sprite.h"
 #include <unistd.h>
 #include "GameTypes.h"
+#include "SimpleAudioEngine.h"
 
 // -----------------------------------------------------------------------
 // This scene is created without a layer, as it requires no touch handling
@@ -151,6 +152,15 @@ void LoadScene::loadNext(float dt)
             // load ex textures here
             // our loading doesnt take time, so we add a small delay to simulate "real" loading
             usleep(500000);
+            
+            // preload some artwork
+            // we actually already did this, but just so that you get the idea
+            //
+            // This demo is so small, that a loading scene probably wouldnt make sense, also as we only have one sprite sheet,
+            // end because that sprite sheet is used to create the load scene itself, it has to be loaded prior to this
+            // So while this actually is not needed, I hope you get the idea
+            cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("demo.plist");
+
             _progress->setPercentage(40);
             break;
         }
@@ -158,6 +168,11 @@ void LoadScene::loadNext(float dt)
         {
             // load ex audio here
             usleep(500000);
+            
+            // preload the sounds we use, so that game doesnt stutter first time it plays
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("beep.wav");
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("game.wav");
+            
             _progress->setPercentage(50);
             break;
         }

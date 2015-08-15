@@ -28,15 +28,56 @@
 
 // -----------------------------------------------------------------------
 
+Credits::Credits()
+{
+    // default constructor
+}
 
+Credits::~Credits()
+{
+    // destructor
+}
 
+Credits* Credits::createWithScene(cocos2d::Scene *scene, const std::string& plist)
+{
+    Credits *credits = new (std::nothrow) Credits();
+    CCASSERT(credits, "You must unlearn, what you have learned");
+    
+    if (credits->initWithScene(scene, plist))
+    {
+        credits->autorelease();
+        return credits;
+    }
+    CC_SAFE_DELETE(credits);
+    return nullptr;
+}
 
+bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
+{
+    
+    
 
-
-
-
+    
+    
+    return true;
+}
 
 // -----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

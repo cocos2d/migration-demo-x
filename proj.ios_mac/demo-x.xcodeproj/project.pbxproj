@@ -13,6 +13,9 @@
 		0E8009F41B72398700D1416E /* 1x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F11B72398700D1416E /* 1x */; };
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
 		0E8009F61B72398700D1416E /* 4x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F31B72398700D1416E /* 4x */; };
+		0EC85DBA1B7E174C000DCD9E /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EC85DB71B7E174C000DCD9E /* beep.wav */; };
+		0EC85DBB1B7E174C000DCD9E /* cocos2d_blues.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EC85DB81B7E174C000DCD9E /* cocos2d_blues.wav */; };
+		0EC85DBC1B7E174C000DCD9E /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EC85DB91B7E174C000DCD9E /* game.wav */; };
 		0EE67DE41B7A0E9900B4BEF1 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */; };
 		0EE67DE91B7A142A00B4BEF1 /* SetupScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DE71B7A142A00B4BEF1 /* SetupScene.cpp */; };
 		0EE67DED1B7A14C000B4BEF1 /* Credits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EE67DEB1B7A14C000B4BEF1 /* Credits.cpp */; };
@@ -112,6 +115,9 @@
 		0E8009F11B72398700D1416E /* 1x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1x; sourceTree = "<group>"; };
 		0E8009F21B72398700D1416E /* 2x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2x; sourceTree = "<group>"; };
 		0E8009F31B72398700D1416E /* 4x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 4x; sourceTree = "<group>"; };
+		0EC85DB71B7E174C000DCD9E /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		0EC85DB81B7E174C000DCD9E /* cocos2d_blues.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cocos2d_blues.wav; sourceTree = "<group>"; };
+		0EC85DB91B7E174C000DCD9E /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
 		0EE67DE21B7A0E9900B4BEF1 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		0EE67DE31B7A0E9900B4BEF1 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		0EE67DE71B7A142A00B4BEF1 /* SetupScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetupScene.cpp; sourceTree = "<group>"; };
@@ -234,6 +240,16 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0EC85DB61B7E1703000DCD9E /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				0EC85DB71B7E174C000DCD9E /* beep.wav */,
+				0EC85DB81B7E174C000DCD9E /* cocos2d_blues.wav */,
+				0EC85DB91B7E174C000DCD9E /* game.wav */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +316,7 @@
 				0E8009F31B72398700D1416E /* 4x */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
+				0EC85DB61B7E1703000DCD9E /* Sound */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -487,6 +504,8 @@
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				0E8009E41B722F0F00D1416E /* white_square.png in Resources */,
+				0EC85DBB1B7E174C000DCD9E /* cocos2d_blues.wav in Resources */,
+				0EC85DBA1B7E174C000DCD9E /* beep.wav in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */,
@@ -495,6 +514,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				0E8009F51B72398700D1416E /* 2x in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				0EC85DBC1B7E174C000DCD9E /* game.wav in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,

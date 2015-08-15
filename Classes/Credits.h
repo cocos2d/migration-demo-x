@@ -31,11 +31,21 @@
 
 // -----------------------------------------------------------------------
 
+class Credits : public cocos2d::Layer
+{
+public:
+    Credits();
+    ~Credits();
+    
+    static Credits* createWithScene(cocos2d::Scene *scene, const std::string& plist);
+    virtual bool initWithScene(cocos2d::Scene *scene, const std::string& plist);
 
 
 
 
 
+
+};
 
 // -----------------------------------------------------------------------
 
