@@ -30,6 +30,7 @@
 #include "GameScene.h"
 #include "SetupScene.h"
 #include "GameTypes.h"
+#include "Credits.h"
 
 // -----------------------------------------------------------------------
 /*
@@ -108,13 +109,16 @@ bool MainScene::init()
     
     // info button
     cocos2d::ui::Button *infoButton = cocos2d::ui::Button::create("info.png", "info.png", "info.png", cocos2d::ui::Button::TextureResType::PLIST);
-    infoButton->setNormalizedPosition(cocos2d::Vec2(0.88, 0.1));
+    infoButton->setNormalizedPosition(cocos2d::Vec2(0.88, 0.14));
     infoButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
                                       {
                                           // Launch credits overlay
                                           this->infoPressed();
                                       });
     this->addChild(infoButton);
+    
+    // no credits shown
+    _credits = nullptr;
     
     // and we are out of here
     return true;
@@ -124,11 +128,10 @@ bool MainScene::init()
 
 void MainScene::infoPressed()
 {
-    
-
-
-
-
+    if (this->getChildByName(kCreditsName)) return;
+    _credits = Credits::createWithScene(cocos2d::Director::getInstance()->getRunningScene(), "credits-x.plist");
+    _credits->setName(kCreditsName);
+    this->addChild(_credits);
 }
 
 // -----------------------------------------------------------------------

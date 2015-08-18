@@ -46,9 +46,10 @@
 #define kGameSpinRandomFactor           15
 
 #define kGameSliderEndStop              15
+#define kCreditsName                    "credits"
 
-#define kGameKeySoundVolume             @"sound.volume"
-#define kGameKeyMusicVolume             @"music.volume"
+#define kGameKeySoundVolume             "sound.volume"
+#define kGameKeyMusicVolume             "music.volume"
 
 // -----------------------------------------------------------------------
 

@@ -28,11 +28,23 @@
 #define __CREDITS_H
 
 #include "cocos2d.h"
+#include "UIButton.h"
 
 // -----------------------------------------------------------------------
 
 class Credits : public cocos2d::Layer
 {
+private:
+    cocos2d::Scene *_scene;
+    float _yPos;
+    bool _isScrolling;
+    bool _endGame;
+    float _spacing;
+    bool _useGreyScale;
+    float _scrollSpeed;
+    cocos2d::Node *_scrollNode;
+    cocos2d::ui::Button *_back;
+    std::vector<std::string> _endGameList;
 public:
     Credits();
     ~Credits();
@@ -40,7 +52,10 @@ public:
     static Credits* createWithScene(cocos2d::Scene *scene, const std::string& plist);
     virtual bool initWithScene(cocos2d::Scene *scene, const std::string& plist);
 
+    void loadSectionWithValueMap(cocos2d::ValueMap dictionary);
+    void update(float delta);
 
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 
 
 

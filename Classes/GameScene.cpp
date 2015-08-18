@@ -56,7 +56,7 @@ bool GameLayer::init()
     
     // create a back button
     cocos2d::ui::Button *backButton = cocos2d::ui::Button::create("back.png", "back.png", "back.png", cocos2d::ui::Button::TextureResType::PLIST);
-    backButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.1));
+    backButton->setNormalizedPosition(cocos2d::Vec2(0.5, 0.14));
     backButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
                                       {
                                           // Send us back to main screen
