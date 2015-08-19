@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E03429E1B7513AE00017584 /* MainScene.cpp */; };
 		0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E11257C1B7C9DF9005412C8 /* credits-x.plist */; };
+		0E53EB881B84DBF10062B28E /* shader.greyscale.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0E53EB861B84DBF10062B28E /* shader.greyscale.fsh */; };
+		0E53EB891B84DBF10062B28E /* shader.greyscale.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0E53EB871B84DBF10062B28E /* shader.greyscale.vsh */; };
 		0E8009E41B722F0F00D1416E /* white_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009E31B722F0F00D1416E /* white_square.png */; };
 		0E8009F41B72398700D1416E /* 1x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F11B72398700D1416E /* 1x */; };
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
@@ -92,6 +94,8 @@
 		0E03429E1B7513AE00017584 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
 		0E03429F1B7513AE00017584 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		0E11257C1B7C9DF9005412C8 /* credits-x.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "credits-x.plist"; sourceTree = "<group>"; };
+		0E53EB861B84DBF10062B28E /* shader.greyscale.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.greyscale.fsh; sourceTree = "<group>"; };
+		0E53EB871B84DBF10062B28E /* shader.greyscale.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.greyscale.vsh; sourceTree = "<group>"; };
 		0E8009E31B722F0F00D1416E /* white_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_square.png; sourceTree = "<group>"; };
 		0E8009F11B72398700D1416E /* 1x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1x; sourceTree = "<group>"; };
 		0E8009F21B72398700D1416E /* 2x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2x; sourceTree = "<group>"; };
@@ -123,7 +127,7 @@
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* demo-x-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "demo-x-mobile.app"; path = "demo-x.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* pong-x.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pong-x.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
@@ -131,16 +135,12 @@
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46880B8619C43A87006E1F66 /* LoadScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadScene.cpp; sourceTree = "<group>"; };
 		46880B8719C43A87006E1F66 /* LoadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadScene.h; sourceTree = "<group>"; };
-		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
-		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
 		503AE0FB17EB989F00D1A890 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppController.mm; path = ios/AppController.mm; sourceTree = SOURCE_ROOT; };
 		503AE0FC17EB989F00D1A890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/main.m; sourceTree = SOURCE_ROOT; };
 		503AE0FD17EB989F00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ios/Prefix.pch; sourceTree = SOURCE_ROOT; };
 		503AE0FE17EB989F00D1A890 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ios/RootViewController.h; sourceTree = SOURCE_ROOT; };
 		503AE0FF17EB989F00D1A890 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = SOURCE_ROOT; };
-		503AE10317EB98FF00D1A890 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = mac/main.cpp; sourceTree = "<group>"; };
-		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5087E77217EB970100C73F5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -207,6 +207,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0E53EB851B84DBD60062B28E /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0E53EB861B84DBF10062B28E /* shader.greyscale.fsh */,
+				0E53EB871B84DBF10062B28E /* shader.greyscale.vsh */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
 		0EC85DB61B7E1703000DCD9E /* Sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +229,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* demo-x-mobile.app */,
+				1D6058910D05DD3D006BFB54 /* pong-x.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,7 +250,6 @@
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				080E96DDFE201D6D7F000001 /* ios */,
-				503AE10617EB990700D1A890 /* mac */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				46880B8319C43A87006E1F66 /* Classes */,
 			);
@@ -284,6 +292,7 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				0EC85DB61B7E1703000DCD9E /* Sound */,
+				0E53EB851B84DBD60062B28E /* Shaders */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -310,26 +319,6 @@
 			);
 			name = Classes;
 			path = ../Classes;
-			sourceTree = "<group>";
-		};
-		503AE0F517EB97AB00D1A890 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				503AE0F617EB97AB00D1A890 /* Icon.icns */,
-				503AE0F717EB97AB00D1A890 /* Info.plist */,
-			);
-			name = Icons;
-			path = mac;
-			sourceTree = SOURCE_ROOT;
-		};
-		503AE10617EB990700D1A890 /* mac */ = {
-			isa = PBXGroup;
-			children = (
-				503AE0F517EB97AB00D1A890 /* Icons */,
-				503AE10317EB98FF00D1A890 /* main.cpp */,
-				503AE10417EB98FF00D1A890 /* Prefix.pch */,
-			);
-			name = mac;
 			sourceTree = "<group>";
 		};
 		5087E77117EB970100C73F5D /* Icons */ = {
@@ -381,7 +370,7 @@
 			);
 			name = "pong-x";
 			productName = iphone;
-			productReference = 1D6058910D05DD3D006BFB54 /* demo-x-mobile.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* pong-x.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -455,10 +444,12 @@
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				0E53EB891B84DBF10062B28E /* shader.greyscale.vsh in Resources */,
 				0E8009E41B722F0F00D1416E /* white_square.png in Resources */,
 				0EC85DBA1B7E174C000DCD9E /* beep.wav in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				0ECE3AFF1B84C72F007E81B2 /* Icon-76@2x.png in Resources */,
+				0E53EB881B84DBF10062B28E /* shader.greyscale.fsh in Resources */,
 				0ECE3B011B84C742007E81B2 /* Images.xcassets in Resources */,
 				0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */,
 				0ECE3AF61B84C72F007E81B2 /* Icon-29@3x.png in Resources */,
