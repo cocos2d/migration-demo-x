@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/Birkemose/Desktop/Work/demo-x/proj.ios_mac/pong-x.xcodeproj">
    </FileRef>
 </Workspace>

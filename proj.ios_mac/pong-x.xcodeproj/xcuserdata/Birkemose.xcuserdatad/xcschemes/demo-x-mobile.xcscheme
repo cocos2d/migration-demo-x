@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-               BuildableName = "demo-x-desktop.app"
-               BlueprintName = "demo-x-desktop"
-               ReferencedContainer = "container:demo-x.xcodeproj">
+               BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+               BuildableName = "pong-x.app"
+               BlueprintName = "pong-x"
+               ReferencedContainer = "container:pong-x.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "demo-x-desktop.app"
-            BlueprintName = "demo-x-desktop"
-            ReferencedContainer = "container:demo-x.xcodeproj">
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+            BuildableName = "pong-x.app"
+            BlueprintName = "pong-x"
+            ReferencedContainer = "container:pong-x.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,10 +52,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "demo-x-desktop.app"
-            BlueprintName = "demo-x-desktop"
-            ReferencedContainer = "container:demo-x.xcodeproj">
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+            BuildableName = "pong-x.app"
+            BlueprintName = "pong-x"
+            ReferencedContainer = "container:pong-x.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,10 +71,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "demo-x-desktop.app"
-            BlueprintName = "demo-x-desktop"
-            ReferencedContainer = "container:demo-x.xcodeproj">
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+            BuildableName = "pong-x.app"
+            BlueprintName = "pong-x"
+            ReferencedContainer = "container:pong-x.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
