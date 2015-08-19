@@ -112,8 +112,20 @@ bool MainScene::init()
     infoButton->setNormalizedPosition(cocos2d::Vec2(0.88, 0.14));
     infoButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
                                       {
-                                          // Launch credits overlay
-                                          this->infoPressed();
+                                          // to make sure credits is not called repeatedly, we check for the event type
+                                          switch (type)
+                                          {
+                                              case cocos2d::ui::Widget::TouchEventType::ENDED:
+                                                  // launch credits overlay
+                                                  this->infoPressed();
+                                                  break;
+                                                  
+                                              case cocos2d::ui::Widget::TouchEventType::BEGAN:
+                                              case cocos2d::ui::Widget::TouchEventType::MOVED:
+                                              case cocos2d::ui::Widget::TouchEventType::CANCELED:
+                                              default:
+                                                  break;
+                                          }
                                       });
     this->addChild(infoButton);
     
@@ -128,9 +140,7 @@ bool MainScene::init()
 
 void MainScene::infoPressed()
 {
-    if (this->getChildByName(kCreditsName)) return;
     _credits = Credits::createWithScene(cocos2d::Director::getInstance()->getRunningScene(), "credits-x.plist");
-    _credits->setName(kCreditsName);
     this->addChild(_credits);
 }
 

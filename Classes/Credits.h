@@ -57,9 +57,8 @@ public:
 
     bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 
-
-
-
+    void replaceShaderWithGreayScaleShader(cocos2d::Node *node);
+    void restoreShader(cocos2d::Node node);
 };
 
 // -----------------------------------------------------------------------

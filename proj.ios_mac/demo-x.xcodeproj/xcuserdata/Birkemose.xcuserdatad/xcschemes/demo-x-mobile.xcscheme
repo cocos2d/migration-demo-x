@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "demo-x-mobile.app"
-               BlueprintName = "demo-x-mobile"
+               BuildableName = "demo-x.app"
+               BlueprintName = "demo-x"
                ReferencedContainer = "container:demo-x.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "demo-x-mobile.app"
-            BlueprintName = "demo-x-mobile"
+            BuildableName = "demo-x.app"
+            BlueprintName = "demo-x"
             ReferencedContainer = "container:demo-x.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "demo-x-mobile.app"
-            BlueprintName = "demo-x-mobile"
+            BuildableName = "demo-x.app"
+            BlueprintName = "demo-x"
             ReferencedContainer = "container:demo-x.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "demo-x-mobile.app"
-            BlueprintName = "demo-x-mobile"
+            BuildableName = "demo-x.app"
+            BlueprintName = "demo-x"
             ReferencedContainer = "container:demo-x.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

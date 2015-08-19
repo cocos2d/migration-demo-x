@@ -25,6 +25,7 @@
 // ****************************************************************************
 
 #include "Credits.h"
+#include "SimpleAudioEngine.h"
 
 // -----------------------------------------------------------------------
 
@@ -37,6 +38,7 @@ Credits::~Credits()
 {
     // destructor
     CCLOG("Credits killed");
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 }
 
 Credits* Credits::createWithScene(cocos2d::Scene *scene, const std::string& plist)
@@ -100,7 +102,7 @@ bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
     for (int creditIndex = 1; creditIndex < 999; creditIndex ++)
     {
         std::string entry = cocos2d::StringUtils::format("credit - %d", creditIndex);
-        if (!endGameDict[entry].isNull()) _endGameList.push_back(entry);
+        if (!endGameDict[entry].isNull()) _endGameList.push_back(endGameDict[entry].asString());
         else break;
     }
     
@@ -122,15 +124,21 @@ bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
                                             */
                                        });
     this->addChild(_back);
-    
-    
 
+    /*
+    
+    //create my own program
+    auto program = new GLProgram;
+    program->initWithFilenames("myVertextShader.vert", "myFragmentShader.frag");
+    program->link();
+    //set uniform locations
+    program->updateUniforms();
     
     
-    
-    
-    
-    
+    //    this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR));
+    this->setGLProgram(program);
+
+    */
     
     
     
@@ -144,7 +152,11 @@ bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
     
     // start update
     this->scheduleUpdate();
-    
+
+    // play our cool blues
+    if (!dictionary["music"].isNull())
+        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(dictionary["music"].asString().c_str());
+
     return true;
 }
 
@@ -242,44 +254,52 @@ void Credits::update(float delta)
                                                          endCredits,
                                                          nullptr));
 
-        
-        
-        /*
-        
-        // run endgame sequence
-        [_scrollNode runAction:[CCActionSequence actions:
-                                [CCActionFadeOut actionWithDuration:1.0],
-                                [CCActionCallBlock actionWithBlock:^(void)
-                                 {
-                                 // clear scrollNode (not visible anyways)
-                                 [_scrollNode removeAllChildrenWithCleanup:YES];
-                                 _scrollNode.position = CGPointZero;
-                                 _isScrolling = NO;
-                                 
-                                 // show endgame
-                                 _yPos = 0.5 + ((_endgame.count - 1) * _spacing * 0.5);
-                                 for (NSString *labelText in _endgame)
-                                 {
-                                 CCLabelTTF *label = [CCLabelTTF labelWithString:labelText fontName:@"ArialMT" fontSize:36];
-                                 label.positionType = CCPositionTypeNormalized;
-                                 label.position = (CGPoint){0.5, _yPos};
-                                 [_scrollNode addChild:label];
-                                 _yPos -= _spacing;
-                                 }
-                                 }],
-                                [CCActionFadeIn actionWithDuration:0.5],
-                                [CCActionDelay actionWithDuration:2.0],
-                                [CCActionFadeOut actionWithDuration:1.0],
-                                [CCActionCallBlock actionWithBlock:^(void)
-                                 {
-                                 [self removeFromParentAndCleanup:YES];
-                                 }],
-                                nil]];
-         */
     }
 }
 
+// -----------------------------------------------------------------------
 
+void replaceShaderWithGreayScaleShader(cocos2d::Node *node)
+{
+/*
+- (void)replaceShaderWithGreyScaleShader:(CCNode *)node
+{
+    if ([node isKindOfClass:[CCSprite class]])
+    {
+        // CCLOG(@"Replacing shader for %@", [node class]);
+        // save shader and replace with greyscale
+        CCShader *shader = node.shader;
+        [_shaderStack addObject:shader];
+        
+        node.shader = [CCShader shaderNamed:@"shader.greyscale"];
+        node.opacity *= 0.25;
+    }
+    // call recursively
+    for (CCNode *child in node.children) [self replaceShaderWithGreyScaleShader:child];
+}
+ */
+}
+
+void restoreShader(cocos2d::Node node)
+{
+/*
+- (void)restoreShader:(CCNode *)node
+{
+    if ([node isKindOfClass:[CCSprite class]])
+    {
+        // CCLOG(@"Restoring shader for %@", [node class]);
+        // restore shader for node
+        node.shader = (CCShader *)[_shaderStack objectAtIndex:_shaderStackPointer];
+        node.opacity /= 0.25;
+        _shaderStackPointer ++;
+    }
+    // call recursively
+    for (CCNode *child in node.children) [self restoreShader:child];
+}
+ */
+}
+
+// -----------------------------------------------------------------------
 
 
 
