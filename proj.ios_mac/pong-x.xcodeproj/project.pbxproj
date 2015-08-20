@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		0E0342A01B7513AE00017584 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0E03429E1B7513AE00017584 /* MainScene.cpp */; };
 		0E11257D1B7C9DF9005412C8 /* credits-x.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E11257C1B7C9DF9005412C8 /* credits-x.plist */; };
+		0E4B71841B86137100CAA1FE /* cocos2d_blues.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0E4B71831B86137100CAA1FE /* cocos2d_blues.aiff */; };
 		0E53EB881B84DBF10062B28E /* shader.greyscale.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0E53EB861B84DBF10062B28E /* shader.greyscale.fsh */; };
 		0E53EB891B84DBF10062B28E /* shader.greyscale.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0E53EB871B84DBF10062B28E /* shader.greyscale.vsh */; };
 		0E8009E41B722F0F00D1416E /* white_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009E31B722F0F00D1416E /* white_square.png */; };
 		0E8009F41B72398700D1416E /* 1x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F11B72398700D1416E /* 1x */; };
 		0E8009F51B72398700D1416E /* 2x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F21B72398700D1416E /* 2x */; };
 		0E8009F61B72398700D1416E /* 4x in Resources */ = {isa = PBXBuildFile; fileRef = 0E8009F31B72398700D1416E /* 4x */; };
-		0EA1B6651B81EA77005D31E7 /* cocos2d_blues.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 0EA1B6641B81EA77005D31E7 /* cocos2d_blues.aiff */; };
 		0EC85DBA1B7E174C000DCD9E /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EC85DB71B7E174C000DCD9E /* beep.wav */; };
 		0EC85DBC1B7E174C000DCD9E /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0EC85DB91B7E174C000DCD9E /* game.wav */; };
 		0ECE3AF51B84C72F007E81B2 /* Icon-29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ECE3AEA1B84C72F007E81B2 /* Icon-29@2x.png */; };
@@ -94,13 +94,13 @@
 		0E03429E1B7513AE00017584 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
 		0E03429F1B7513AE00017584 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		0E11257C1B7C9DF9005412C8 /* credits-x.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "credits-x.plist"; sourceTree = "<group>"; };
+		0E4B71831B86137100CAA1FE /* cocos2d_blues.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = cocos2d_blues.aiff; sourceTree = "<group>"; };
 		0E53EB861B84DBF10062B28E /* shader.greyscale.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.greyscale.fsh; sourceTree = "<group>"; };
 		0E53EB871B84DBF10062B28E /* shader.greyscale.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.greyscale.vsh; sourceTree = "<group>"; };
 		0E8009E31B722F0F00D1416E /* white_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_square.png; sourceTree = "<group>"; };
 		0E8009F11B72398700D1416E /* 1x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 1x; sourceTree = "<group>"; };
 		0E8009F21B72398700D1416E /* 2x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 2x; sourceTree = "<group>"; };
 		0E8009F31B72398700D1416E /* 4x */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 4x; sourceTree = "<group>"; };
-		0EA1B6641B81EA77005D31E7 /* cocos2d_blues.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = cocos2d_blues.aiff; path = "../../Cocos2D/cocos2d-objc/templates/cocos2d iOS demo.xctemplate/Resources/cocos2d_blues.aiff"; sourceTree = "<group>"; };
 		0EC85DB71B7E174C000DCD9E /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		0EC85DB91B7E174C000DCD9E /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
 		0ECE3AEA1B84C72F007E81B2 /* Icon-29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29@2x.png"; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		0EC85DB61B7E1703000DCD9E /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				0EA1B6641B81EA77005D31E7 /* cocos2d_blues.aiff */,
+				0E4B71831B86137100CAA1FE /* cocos2d_blues.aiff */,
 				0EC85DB71B7E174C000DCD9E /* beep.wav */,
 				0EC85DB91B7E174C000DCD9E /* game.wav */,
 			);
@@ -443,6 +443,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				0E4B71841B86137100CAA1FE /* cocos2d_blues.aiff in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				0E53EB891B84DBF10062B28E /* shader.greyscale.vsh in Resources */,
 				0E8009E41B722F0F00D1416E /* white_square.png in Resources */,
@@ -455,7 +456,6 @@
 				0ECE3AF61B84C72F007E81B2 /* Icon-29@3x.png in Resources */,
 				0ECE3AF51B84C72F007E81B2 /* Icon-29@2x.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
-				0EA1B6651B81EA77005D31E7 /* cocos2d_blues.aiff in Resources */,
 				0E8009F61B72398700D1416E /* 4x in Resources */,
 				0E8009F51B72398700D1416E /* 2x in Resources */,
 				0ECE3AFA1B84C72F007E81B2 /* Icon-57@2x.png in Resources */,
