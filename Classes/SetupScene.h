@@ -28,13 +28,18 @@
 #define __SETUP_SCENE_H__
 
 #include "cocos2d.h"
+#include "UISlider.h"
 
 // -----------------------------------------------------------------------
 
 class SetupScene : public cocos2d::Layer
 {
+protected:
+    cocos2d::ui::Slider *_soundVolume;
+    cocos2d::ui::Slider *_musicVolume;
 public:
     CREATE_FUNC(SetupScene);
+    ~SetupScene();
     static cocos2d::Scene* createScene();
     bool init();
 };

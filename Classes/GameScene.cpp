@@ -85,6 +85,10 @@ bool GameLayer::init()
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
+    // load sound volume
+    cocos2d::UserDefault *defaults = cocos2d::UserDefault::getInstance();
+    CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(defaults->getFloatForKey(kGameKeySoundVolume));
+
     // serve first ball from random side
     this->serveFromSide(Paddle::Side::INVALID);
     

@@ -26,6 +26,7 @@
 
 #include "Credits.h"
 #include "SimpleAudioEngine.h"
+#include "GameTypes.h"
 
 // -----------------------------------------------------------------------
 
@@ -140,9 +141,7 @@ bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
 
     */
     
-    
-    
-    
+
     // initialize touch handling
     cocos2d::EventListenerTouchOneByOne *listener = cocos2d::EventListenerTouchOneByOne::create();
     
@@ -155,8 +154,14 @@ bool Credits::initWithScene(cocos2d::Scene *scene, const std::string& plist)
 
     // play our cool blues
     if (!dictionary["music"].isNull())
+    {
+        // load music volume
+        cocos2d::UserDefault *defaults = cocos2d::UserDefault::getInstance();
+        CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(defaults->getFloatForKey(kGameKeyMusicVolume));
+        // play audio
         CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(dictionary["music"].asString().c_str());
-
+    }
+    
     return true;
 }
 

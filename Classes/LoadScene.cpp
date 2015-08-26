@@ -180,6 +180,18 @@ void LoadScene::loadNext(float dt)
         {
             // load animations, shaders etc
             usleep(500000);
+            
+            // make sure user defaults are valid
+            cocos2d::UserDefault *defaults = cocos2d::UserDefault::getInstance();
+            // check if setup valid
+            if (defaults->getFloatForKey(kGameKeySoundVolume, -1) < 0)
+            {
+                // reset setup
+                defaults->setFloatForKey(kGameKeySoundVolume, 0.5);
+                defaults->setFloatForKey(kGameKeyMusicVolume, 0.5);
+                defaults->flush();
+            }
+
             _progress->setPercentage(60);
             break;
         }
